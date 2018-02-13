@@ -6,7 +6,7 @@
 /*   By: jszabo <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/14 10:33:32 by jszabo            #+#    #+#             */
-/*   Updated: 2018/02/09 09:31:39 by jszabo           ###   ########.fr       */
+/*   Updated: 2018/02/12 10:21:04 by jszabo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,5 +95,7 @@ void				ft_swap(int *a, int *b);
 char				*ft_itoa_base(int value, int base);
 int					ft_printf(char *format, ...);
 int					ft_strchlen(char *str, char c);
+char				*ft_strdiv(char **src, char *new, int n);
+int					ft_numlen(int a);
 
 #endif
