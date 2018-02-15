@@ -6,13 +6,15 @@
 /*   By: jszabo <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/14 10:33:32 by jszabo            #+#    #+#             */
-/*   Updated: 2018/02/12 10:21:04 by jszabo           ###   ########.fr       */
+/*   Updated: 2018/02/15 15:38:14 by jszabo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LIBFT_H
 # define LIBFT_H
 # include <string.h>
+# include <stdlib.h>
+# include <unistd.h>
 
 typedef struct		s_list
 {
@@ -96,6 +98,10 @@ char				*ft_itoa_base(int value, int base);
 int					ft_printf(char *format, ...);
 int					ft_strchlen(char *str, char c);
 char				*ft_strdiv(char **src, char *new, int n);
+int					ft_stroneleft(char **str);
 int					ft_numlen(int a);
+char				*ft_strnfill(char *str, char c, int n);
+void				ft_putwstr(const wchar_t *s);
+int					ft_wstrlen(const wchar_t *s);
 
 #endif
