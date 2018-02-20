@@ -6,7 +6,7 @@
 /*   By: jszabo <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/09 14:13:26 by jszabo            #+#    #+#             */
-/*   Updated: 2018/02/15 13:23:26 by jszabo           ###   ########.fr       */
+/*   Updated: 2018/02/20 15:29:25 by jszabo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,14 +40,16 @@ int		ft_pf_handle_numbers(int *ret, va_list args, t_print *features);
 int		ft_pf_struct_init(t_print *features);
 int		ft_pf_precision_s(char **str, t_print *features);
 int             ft_pf_precision_cap_s(wchar_t **str, t_print *features);
-int     	ft_pf_precision_p(char **str, t_print *features);
+int     	ft_pf_precision_num(char **str, t_print *features);
 int		ft_pf_width_fl_zeros_left(char **str, char **spaces, t_print *features);
 int		ft_pf_width_fl_zeros_left_cap_s(wchar_t **str, wchar_t **spaces, t_print *features);
 int		ft_pf_handle_s(va_list args, t_print *features, int *ret);
 int		ft_pf_handle_cap_s(va_list args, t_print *features, int *ret);
 int		ft_pf_handle_d(va_list args, t_print *features, int *ret);
-int		ft_pf_handle_signed_char(va_list args, t_print *features, int *ret);
+int		ft_pf_handle_hh_d(va_list args, t_print *features, int *ret);
 int		ft_pf_hex_sign(char **str);
 int		ft_pf_hex_sign_zeros(char **str);
+int		ft_pf_sign(char **str, t_print *features);
+int		ft_pf_plus_space(char **str, t_print *features);
 
 #endif
