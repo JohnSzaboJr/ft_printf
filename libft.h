@@ -103,5 +103,11 @@ int					ft_numlen(int a);
 char				*ft_strnfill(char *str, char c, int n);
 void				ft_putwstr(const wchar_t *s);
 int					ft_wstrlen(const wchar_t *s);
+wchar_t					*ft_wstrdup(wchar_t *s1);
+wchar_t                            *ft_wstrcpy(wchar_t *dst, const wchar_t *src);
+wchar_t					*ft_wstrnew(int size);
+wchar_t					*ft_wstrnfill(wchar_t *str, wchar_t c, int n);
+wchar_t					*ft_wstrjoin(const wchar_t *s1, const wchar_t *s2);
+char					*ft_sizettohexa(size_t value);
 
 #endif

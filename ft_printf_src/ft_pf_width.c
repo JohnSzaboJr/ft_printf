@@ -15,7 +15,7 @@
 
 int	ft_pf_width_fl_zeros_left(char **str, char **spaces, t_print *features)
 {
-	char *tmp;
+	char		*tmp;
 
 	tmp = NULL;
 	if (features->width > ft_strlen(*str))
@@ -34,9 +34,36 @@ int	ft_pf_width_fl_zeros_left(char **str, char **spaces, t_print *features)
 			return (0);
 		free(*str);
 		free(*spaces);
-		if (!(*str = ft_strdup(tmp)))
-			return (0);
-		free(tmp);
+		*str = tmp;
 	}
 	return (1);
+}
+
+
+int     ft_pf_width_fl_zeros_left_cap_s(wchar_t **str, wchar_t **spaces, t_print *features)
+{
+  wchar_t *tmp;
+
+  tmp = NULL;
+  if ((int)features->width > ft_wstrlen(*str))
+    {
+      if (!((*spaces) = ft_wstrnew((int)features->width - ft_wstrlen(*str))))
+	return (0);
+      if (features->fl_prep_zeros)
+	*spaces = ft_wstrnfill(*spaces, L'0', ((int)features->width - ft_wstrlen(*str)));
+      else
+	*spaces = ft_wstrnfill(*spaces, L' ', ((int)features->width - ft_wstrlen(*str)));
+      if (!ft_wstrlen(*str))
+	tmp = ft_wstrdup(*spaces);
+      else if (features->fl_left_just && !(tmp = ft_wstrjoin(*str, *spaces)))
+	return (0);
+      else if (!(features->fl_left_just) && !(tmp = ft_wstrjoin(*spaces, *str)))
+	return (0);
+      free(*str);
+      free(*spaces);
+      if (!(*str = ft_wstrdup(tmp)))
+	return (0);
+      free(tmp);
+    }
+  return (1);
 }

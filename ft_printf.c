@@ -22,6 +22,10 @@ static int	ft_pf_format(t_print *features, va_list args, int *ret)
 		return (ft_pf_handle_percent(ret));
 	if (t == 'S' || t == 's')
 		return (ft_pf_handle_strings(ret, args, features));
+	if (t == 'p')
+	  	return (ft_pf_handle_pointers(ret, args, features));
+	if (t == 'd' || t == 'D')
+		return (ft_pf_handle_numbers(ret, args, features));
 	return (1);
 }
 
@@ -35,7 +39,7 @@ static int	ft_pf_symbols(char **str, int *ret, va_list args)
 		!ft_stroneleft(str) ||
 		!ft_pf_store_flags(str, features) ||
 		!ft_pf_store_num_width(str, &(features->width), args) ||
-		!ft_pf_store_precision(str, &(features->precision), args) ||
+		!ft_pf_store_precision(str, features, args) ||
 		!ft_pf_store_modifiers(str, features) || 
 		!ft_pf_store_type(str, &(features->type)) ||
 		!ft_pf_format(features, args, ret))

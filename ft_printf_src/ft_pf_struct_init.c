@@ -22,12 +22,8 @@ int  ft_pf_struct_init(t_print *features)
     features->fl_alter = 0;
     features->width = 0;
     features->precision = 0;
-    features->mod_hh = 0;
-    features->mod_ll = 0;
-    features->mod_h = 0;
-    features->mod_l = 0;
-    features->mod_j = 0;
-    features->mod_z = 0;
+    features->is_precision = 0;
+    features->mod = '\0';
     features->type = '\0';
     return (1);
 }

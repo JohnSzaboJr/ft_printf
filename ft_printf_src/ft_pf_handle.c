@@ -22,29 +22,40 @@ int	ft_pf_handle_percent(int *ret)
 
 int	ft_pf_handle_strings(int *ret, va_list args, t_print *features)
 {
-	char 	*str;
-	char 	*new;
-	char 	*spaces;
-	wchar_t *str_t;
-	wchar_t	*new_t;
-
-	if (features->type == 'S')
-	{
-		str_t = va_arg(args, wchar_t*);
-		ft_putwstr(str_t);
-	}
-	if (features->type == 's')
-	{
-		str = va_arg(args, char*);
-		if (!(new = ft_strdup(str)))
-			return (0);
-		if (!ft_pf_precision_s(&new, features->precision) ||
-			!ft_pf_width_fl_zeros_left(&new, &spaces, features))
-			return (0);
-		ft_putstr(new);
-		ret = ret + ft_strlen(new);
-		free(new);
-	}
-	// put string handling functions into 2 separate, and in sep file
+  if (features->type == 's' && features->mod != 'l' && !(ft_pf_handle_s(args, features, ret)))
+	return (0);
+  if (features->type == 's' && features->mod == 'l' && !(ft_pf_handle_cap_s(args, features, ret)))
+    	return (0);
+  if (features->type == 'S' && !ft_pf_handle_cap_s(args, features, ret))
+	return (0);
 	return (1);
+}
+
+int	ft_pf_handle_pointers(int *ret, va_list args, t_print *features)
+{
+  size_t	ptr;
+  char		*str;
+  char		*new;
+  char		*spaces;
+
+  ptr = (size_t)(va_arg(args, void*));
+  str = ft_sizettohexa(ptr);
+  if (!(new = ft_strdup(str)) ||
+      !ft_pf_precision_p(&new, features) ||
+      !ft_pf_hex_sign(&new) ||
+      !ft_pf_width_fl_zeros_left(&new, &spaces, features) ||
+      !ft_pf_hex_sign_zeros(&new))
+    return (0);
+  free(str);
+  ft_putstr(new);
+  *ret = *ret + ft_strlen(new);
+  free(new);
+  return (1);
+}
+
+int     ft_pf_handle_numbers(int *ret, va_list args, t_print *features)
+{
+  if (features->type == 'd' && !ft_pf_handle_d(args, features, ret))
+    return (0);
+  return (1);
 }

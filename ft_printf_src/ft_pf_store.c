@@ -70,12 +70,13 @@ int		ft_pf_store_num_width(char **str, size_t *target, va_list args)
 	return (1);
 }
 
-int		ft_pf_store_precision(char **str, size_t *target, va_list args)
+int		ft_pf_store_precision(char **str, t_print *features, va_list args)
 {
     if ((*str)[0] == '.')
     {
+      features->is_precision = 1;
         *str = ft_memmove(*str, *str + 1, ft_strlen(*str));
-        ft_pf_store_num_width(str, target, args);
+        ft_pf_store_num_width(str, &(features->precision), args);
     }
 	return (1);
 }
@@ -94,18 +95,12 @@ int		ft_pf_store_modifiers(char **str, t_print *features)
 		return (1);
     if (!(modifiers = ft_strdiv(str, modifiers, i)))
         return (0);
-	if (ft_strstr(modifiers, "hh"))
-		features->mod_hh = 1;
-	if (ft_strstr(modifiers, "ll"))
-		features->mod_ll = 1;
-	if (!(features->mod_hh) && ft_strchr(modifiers, 'h'))
-		features->mod_h = 1;
-	if (!(features->mod_ll) && ft_strchr(modifiers, 'l'))
-		features->mod_l = 1;
-	if (ft_strchr(modifiers, 'j'))
-		features->mod_j = 1;
-	if (ft_strchr(modifiers, 'z'))
-		features->mod_z = 1;
-	free(modifiers);
+    if (modifiers[i] == 'h' && modifiers[i + 1] && modifiers[i + 1] == 'h')
+	features->mod = 'H';
+    else if (modifiers[i] == 'l' && modifiers[i + 1] && modifiers[i + 1] == 'l')
+	features->mod = 'L';
+    else
+      	features->mod = modifiers[0];
+    free(modifiers);
     return (1);
 }
