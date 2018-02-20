@@ -6,7 +6,7 @@
 /*   By: jszabo <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/14 14:49:38 by jszabo            #+#    #+#             */
-/*   Updated: 2018/02/15 15:53:08 by jszabo           ###   ########.fr       */
+/*   Updated: 2018/02/20 13:41:24 by jszabo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ int	ft_pf_handle_pointers(int *ret, va_list args, t_print *features)
   ptr = (size_t)(va_arg(args, void*));
   str = ft_sizettohexa(ptr);
   if (!(new = ft_strdup(str)) ||
-      !ft_pf_precision_p(&new, features) ||
+      !ft_pf_precision_num(&new, features) ||
       !ft_pf_hex_sign(&new) ||
       !ft_pf_width_fl_zeros_left(&new, &spaces, features) ||
       !ft_pf_hex_sign_zeros(&new))

@@ -6,7 +6,7 @@
 /*   By: jszabo <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/15 10:52:42 by jszabo            #+#    #+#             */
-/*   Updated: 2018/02/15 13:08:30 by jszabo           ###   ########.fr       */
+/*   Updated: 2018/02/20 13:39:30 by jszabo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ int     ft_pf_precision_cap_s(wchar_t **str, t_print *features)
   return (1);
 }
 
-int     ft_pf_precision_p(char **str, t_print *features)
+int     ft_pf_precision_num(char **str, t_print *features)
 {
   char *spaces;
   char *new;
@@ -35,11 +35,10 @@ int     ft_pf_precision_p(char **str, t_print *features)
   if (features->precision > ft_strlen(*str))
     {
       if (!(spaces = ft_strnew(features->precision - ft_strlen(*str))))
-	return (0);
-      features->fl_prep_zeros = 0;
+		  return (0);
       spaces = ft_strnfill(spaces, '0', (features->precision - ft_strlen(*str)));
       if (!(new = ft_strjoin(spaces, *str)))
-	return (0);
+		  return (0);
       free(spaces);
       free(*str);
       *str = new;

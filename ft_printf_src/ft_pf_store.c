@@ -6,7 +6,7 @@
 /*   By: jszabo <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/12 16:53:24 by jszabo            #+#    #+#             */
-/*   Updated: 2018/02/14 17:12:48 by jszabo           ###   ########.fr       */
+/*   Updated: 2018/02/20 13:15:09 by jszabo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,10 +95,11 @@ int		ft_pf_store_modifiers(char **str, t_print *features)
 		return (1);
     if (!(modifiers = ft_strdiv(str, modifiers, i)))
         return (0);
+	i = 0;
     if (modifiers[i] == 'h' && modifiers[i + 1] && modifiers[i + 1] == 'h')
-	features->mod = 'H';
+		features->mod = 'H';
     else if (modifiers[i] == 'l' && modifiers[i + 1] && modifiers[i + 1] == 'l')
-	features->mod = 'L';
+		features->mod = 'L';
     else
       	features->mod = modifiers[0];
     free(modifiers);
