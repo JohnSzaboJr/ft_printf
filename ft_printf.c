@@ -24,7 +24,7 @@ static int	ft_pf_format(t_print *features, va_list args, int *ret)
 		return (ft_pf_handle_strings(ret, args, features));
 	if (t == 'p')
 	  	return (ft_pf_handle_pointers(ret, args, features));
-	if (t == 'd' || t == 'D')
+	if (t == 'd' || t == 'D' || t == 'i')
 		return (ft_pf_handle_numbers(ret, args, features));
 	return (1);
 }
@@ -84,14 +84,8 @@ int			ft_printf(char *format, ... )
 		}
 	}
 
-// format accordingly
-// (make a new string)
-// ft_strjoin <- new
-// then start again in a loop...
-	
-// ================================?
-// when does it return a neg number or 0?
-// strchr
+	// review parsing process for width and precision
+	// revisit d j and z;
 
 	va_end(args);
 	return (ret);

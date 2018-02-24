@@ -46,7 +46,13 @@ int		ft_pf_width_fl_zeros_left_cap_s(wchar_t **str, wchar_t **spaces, t_print *f
 int		ft_pf_handle_s(va_list args, t_print *features, int *ret);
 int		ft_pf_handle_cap_s(va_list args, t_print *features, int *ret);
 int		ft_pf_handle_d(va_list args, t_print *features, int *ret);
+int		ft_pf_handle_d_mod(char **new, char **str, char **spaces, t_print *features);
 int		ft_pf_handle_hh_d(va_list args, t_print *features, int *ret);
+int             ft_pf_handle_h_d(va_list args, t_print *features, int *ret);
+int             ft_pf_handle_ll_d(va_list args, t_print *features, int *ret);
+int             ft_pf_handle_l_d(va_list args, t_print *features, int *ret);
+int             ft_pf_handle_j_d(va_list args, t_print *features, int *ret);
+int             ft_pf_handle_z_d(va_list args, t_print *features, int *ret);
 int		ft_pf_hex_sign(char **str);
 int		ft_pf_hex_sign_zeros(char **str);
 int		ft_pf_sign(char **str, t_print *features);

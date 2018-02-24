@@ -57,5 +57,9 @@ int     ft_pf_handle_numbers(int *ret, va_list args, t_print *features)
 {
   if (features->type == 'd' && !ft_pf_handle_d(args, features, ret))
     return (0);
+  if (features->type == 'i' && !ft_pf_handle_d(args, features, ret))
+    return (0);
+  if (features->type == 'D' && !ft_pf_handle_l_d(args, features, ret))
+    return (0);
   return (1);
 }

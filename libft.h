@@ -109,5 +109,9 @@ wchar_t					*ft_wstrnew(int size);
 wchar_t					*ft_wstrnfill(wchar_t *str, wchar_t c, int n);
 wchar_t					*ft_wstrjoin(const wchar_t *s1, const wchar_t *s2);
 char					*ft_sizettohexa(size_t value);
+char					*ft_longtoa(long n);
+char                                    *ft_longlongtoa(long long n);
+char                                    *ft_intmaxtoa(intmax_t n);
+char                                    *ft_sizetoa(size_t n);
 
 #endif
