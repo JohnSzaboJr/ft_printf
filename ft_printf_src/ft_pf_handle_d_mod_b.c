@@ -6,7 +6,7 @@
 /*   By: jszabo <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/14 14:49:38 by jszabo            #+#    #+#             */
-/*   Updated: 2018/02/20 15:36:37 by jszabo           ###   ########.fr       */
+/*   Updated: 2018/02/24 11:26:41 by jszabo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,4 +47,22 @@ int     ft_pf_handle_z_d(va_list args, t_print *features, int *ret)
   free(new);
   free(str);
   return (1);
+}
+
+int     ft_pf_handle_no_d(va_list args, t_print *features, int *ret)
+{
+    int			c;
+    char        *str;
+    char        *new;
+    char        *spaces;
+
+    c = (va_arg(args, int));
+    str = ft_itoa(c);
+    if (!(ft_pf_handle_d_mod(&new, &str, &spaces, features)))
+		return (0);
+    ft_putstr(new);
+    *ret = *ret + ft_strlen(new);
+    free(new);
+    free(str);
+    return (1);
 }

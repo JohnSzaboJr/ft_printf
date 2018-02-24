@@ -6,7 +6,7 @@
 /*   By: jszabo <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/14 14:49:38 by jszabo            #+#    #+#             */
-/*   Updated: 2018/02/20 13:41:24 by jszabo           ###   ########.fr       */
+/*   Updated: 2018/02/24 11:22:08 by jszabo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,5 +61,7 @@ int     ft_pf_handle_numbers(int *ret, va_list args, t_print *features)
     return (0);
   if (features->type == 'D' && !ft_pf_handle_l_d(args, features, ret))
     return (0);
+  if (features->type == 'o' && !ft_pf_handle_o(args, features, ret))
+	  return (0);
   return (1);
 }

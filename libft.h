@@ -6,7 +6,7 @@
 /*   By: jszabo <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/14 10:33:32 by jszabo            #+#    #+#             */
-/*   Updated: 2018/02/15 15:38:14 by jszabo           ###   ########.fr       */
+/*   Updated: 2018/02/24 18:42:33 by jszabo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,5 +113,6 @@ char					*ft_longtoa(long n);
 char                                    *ft_longlongtoa(long long n);
 char                                    *ft_intmaxtoa(intmax_t n);
 char                                    *ft_sizetoa(size_t n);
+char        		*ft_uitoa_base(unsigned long long value, int base);
 
 #endif

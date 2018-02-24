@@ -6,7 +6,7 @@
 /*   By: jszabo <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/08 10:59:10 by jszabo            #+#    #+#             */
-/*   Updated: 2018/02/15 10:27:43 by jszabo           ###   ########.fr       */
+/*   Updated: 2018/02/24 11:20:02 by jszabo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ static int	ft_pf_format(t_print *features, va_list args, int *ret)
 		return (ft_pf_handle_strings(ret, args, features));
 	if (t == 'p')
 	  	return (ft_pf_handle_pointers(ret, args, features));
-	if (t == 'd' || t == 'D' || t == 'i')
+	if (t == 'd' || t == 'D' || t == 'i' || t == 'o')
 		return (ft_pf_handle_numbers(ret, args, features));
 	return (1);
 }
