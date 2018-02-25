@@ -63,5 +63,13 @@ int     ft_pf_handle_numbers(int *ret, va_list args, t_print *features)
     return (0);
   if (features->type == 'o' && !ft_pf_handle_o(args, features, ret))
 	  return (0);
+  if (features->type == 'O' && !ft_pf_handle_l_o(args, features, ret))
+    return (0);
+  if (features->type == 'u' && !ft_pf_handle_u(args, features, ret))
+    return (0);
+  if (features->type == 'U' && !ft_pf_handle_l_u(args, features, ret))
+    return (0);
+  if (features->type == 'x' && !ft_pf_handle_x(args, features, ret))
+    return (0);
   return (1);
 }

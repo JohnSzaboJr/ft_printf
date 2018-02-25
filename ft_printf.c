@@ -24,7 +24,8 @@ static int	ft_pf_format(t_print *features, va_list args, int *ret)
 		return (ft_pf_handle_strings(ret, args, features));
 	if (t == 'p')
 	  	return (ft_pf_handle_pointers(ret, args, features));
-	if (t == 'd' || t == 'D' || t == 'i' || t == 'o')
+	if (t == 'd' || t == 'D' || t == 'i' || t == 'o' || t == 'O' ||
+	    t == 'u' || t == 'U' || t == 'x')
 		return (ft_pf_handle_numbers(ret, args, features));
 	return (1);
 }
