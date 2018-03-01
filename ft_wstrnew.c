@@ -6,7 +6,7 @@
 /*   By: jszabo <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/22 09:35:03 by jszabo            #+#    #+#             */
-/*   Updated: 2018/02/07 12:20:59 by jszabo           ###   ########.fr       */
+/*   Updated: 2018/03/01 13:44:23 by jszabo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,10 @@
 #include <stdlib.h>
 #include <string.h>
 
-wchar_t	*ft_wstrnew(int size)
+wchar_t		*ft_wstrnew(int size)
 {
 	wchar_t	*new;
-	int	i;
+	int		i;
 
 	i = 0;
 	new = (wchar_t *)malloc(sizeof(*new) * (size + 1));

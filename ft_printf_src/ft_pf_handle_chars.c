@@ -6,7 +6,7 @@
 /*   By: jszabo <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/14 14:49:38 by jszabo            #+#    #+#             */
-/*   Updated: 2018/02/20 15:40:31 by jszabo           ###   ########.fr       */
+/*   Updated: 2018/03/01 14:11:11 by jszabo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,8 +47,7 @@ int     ft_pf_handle_cap_c(va_list args, t_print *features, int *ret)
       new[0] = c;
       if (!ft_pf_width_fl_zeros_left_cap_s(&new, &spaces, features))
 		return (0);
-      ft_putwstr(new);
-      *ret = *ret + ft_wstrlen(new);
+      *ret = *ret + ft_putwstr(new);
       free(new);
   return (1);
 }

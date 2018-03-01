@@ -6,7 +6,7 @@
 /*   By: jszabo <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/14 10:33:32 by jszabo            #+#    #+#             */
-/*   Updated: 2018/02/24 18:42:33 by jszabo           ###   ########.fr       */
+/*   Updated: 2018/03/01 14:07:17 by jszabo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,18 +101,19 @@ char				*ft_strdiv(char **src, char *new, int n);
 int					ft_stroneleft(char **str);
 int					ft_numlen(int a);
 char				*ft_strnfill(char *str, char c, int n);
-void				ft_putwstr(const wchar_t *s);
+int					ft_putwstr(const wchar_t *s);
 int					ft_wstrlen(const wchar_t *s);
-wchar_t             *ft_wstrdup(wchar_t *s1);
-wchar_t             *ft_wstrcpy(wchar_t *dst, const wchar_t *src);
-wchar_t             *ft_wstrnew(int size);
-wchar_t             *ft_wstrnfill(wchar_t *str, wchar_t c, int n);
-wchar_t             *ft_wstrjoin(const wchar_t *s1, const wchar_t *s2);
-char                *ft_sizettohexa(size_t value);
-char                *ft_longtoa(long n);
-char                *ft_longlongtoa(long long n);
-char                *ft_intmaxtoa(intmax_t n);
-char                *ft_sizetoa(size_t n);
-char        		*ft_uitoa_base(unsigned long long value, int base);
+wchar_t				*ft_wstrdup(wchar_t *s1);
+wchar_t				*ft_wstrcpy(wchar_t *dst, const wchar_t *src);
+wchar_t				*ft_wstrnew(int size);
+wchar_t				*ft_wstrnfill(wchar_t *str, wchar_t c, int n);
+wchar_t				*ft_wstrjoin(const wchar_t *s1, const wchar_t *s2);
+char				*ft_sizettohexa(size_t value);
+char				*ft_longtoa(long n);
+char				*ft_longlongtoa(long long n);
+char				*ft_intmaxtoa(intmax_t n);
+char				*ft_sizetoa(size_t n);
+char				*ft_uitoa_base(unsigned long long value, int base);
+int					ft_putwchar(wchar_t c);
 
 #endif

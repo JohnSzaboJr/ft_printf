@@ -6,19 +6,19 @@
 /*   By: jszabo <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/15 15:21:57 by jszabo            #+#    #+#             */
-/*   Updated: 2018/02/15 15:36:01 by jszabo           ###   ########.fr       */
+/*   Updated: 2018/03/01 15:03:56 by jszabo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include <string.h>
 
-int  ft_wstrlen(const wchar_t *s)
+int	ft_wstrlen(const wchar_t *s)
 {
-    int i;
+	int i;
 
-    i = 0;
-    while (s[i])
-        i++;
-    return (i);
+	i = 0;
+	while (s[i])
+		i++;
+	return (i);
 }
