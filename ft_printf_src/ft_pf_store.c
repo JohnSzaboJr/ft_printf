@@ -18,7 +18,7 @@ int		ft_pf_store_type(char **str, char *type)
 	const char *types = "%sSpdDioOuUxXcC";
 
 	if (!ft_strchr(types, (*str)[0]))
-		return (0);
+	    return (1);
 	*type = (*str)[0];
 	*str = ft_memmove(*str, *str + 1, ft_strlen(*str));
 	return (1);
@@ -30,7 +30,9 @@ int		ft_pf_store_flags(char **str, t_print *features)
     int         i;
 
     i = 0;
-    while (ft_strchr(flags, (*str)[i]))
+    if (!((*str)[0]))
+      return (1);
+    while ((*str)[i] && ft_strchr(flags, (*str)[i]))
     {
         if ((*str)[i] == '0' && !(features->fl_left_just))
             features->fl_prep_zeros = 1;
@@ -56,6 +58,8 @@ int		ft_pf_store_flags(char **str, t_print *features)
 
 int		ft_pf_store_num_width(char **str, size_t *target, va_list args)
 {
+  if (!((*str)[0]))
+    return (1);
     if (ft_isdigit((*str)[0]))
     {
         *target = ft_atoi(*str);
@@ -72,6 +76,8 @@ int		ft_pf_store_num_width(char **str, size_t *target, va_list args)
 
 int		ft_pf_store_precision(char **str, t_print *features, va_list args)
 {
+  if (!((*str)[0]))
+    return (1);
     if ((*str)[0] == '.')
     {
       features->is_precision = 1;
@@ -89,8 +95,10 @@ int		ft_pf_store_modifiers(char **str, t_print *features)
 
     i = 0;
 	modifiers = NULL;
-    while (ft_strchr(mod_chars, (*str)[i]))
-        i++;
+	if (!((*str)[0]))
+	  return (1);
+	while ((*str)[i] && ft_strchr(mod_chars, (*str)[i]))
+	  i++;
 	if (!i)
 		return (1);
     if (!(modifiers = ft_strdiv(str, modifiers, i)))

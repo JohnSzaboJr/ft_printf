@@ -41,3 +41,17 @@ int	ft_pf_alter(char **str, int alter)
 		(*str)[i - 1] = '0';
 	return (1);
 }
+
+int	ft_pf_alter_x(char **str, t_print *features)
+{
+  if (features->fl_alter && !ft_pf_hex_sign(str))
+    return (0);
+  return (1);
+}
+
+int     ft_pf_alter_x_final(char **str, t_print *features)
+{
+  if (features->fl_alter && !ft_pf_hex_sign_zeros(str))
+    return (0);
+  return (1);
+}

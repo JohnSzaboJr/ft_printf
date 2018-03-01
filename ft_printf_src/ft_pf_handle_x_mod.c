@@ -20,11 +20,13 @@ int	ft_pf_handle_x_mod(char **new, char **str, char **spaces, t_print *features)
   i = 0;
   if (!(*new = ft_strdup(*str)) ||
       !ft_pf_precision_num(new, features) ||
-      !ft_pf_width_fl_zeros_left(new, spaces, features)) 
+      !ft_pf_alter_x(new, features) ||
+      !ft_pf_width_fl_zeros_left(new, spaces, features) ||
+      !ft_pf_alter_x_final(new, features)) 
 	return (0);
-  while ((*str)[i])
+  while ((*new)[i] && features->type == 'x')
     {
-      ft_tolower((*str)[i]);
+      (*new)[i] = ft_tolower((*new)[i]); 
       i++;
     }
   return (1);

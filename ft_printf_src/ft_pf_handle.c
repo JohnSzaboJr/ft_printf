@@ -71,5 +71,18 @@ int     ft_pf_handle_numbers(int *ret, va_list args, t_print *features)
     return (0);
   if (features->type == 'x' && !ft_pf_handle_x(args, features, ret))
     return (0);
+  if (features->type == 'X' && !ft_pf_handle_x(args, features, ret))
+    return (0);
+  return (1);
+}
+
+int     ft_pf_handle_chars(int *ret, va_list args, t_print *features)
+{
+  if (features->type == 'c' && features->mod != 'l' && !(ft_pf_handle_c(args, features, ret)))
+    return (0);
+  if (features->type == 'C' && features->mod == 'l' && !(ft_pf_handle_cap_c(args, features, ret)))
+    return (0);
+  if (features->type == 'C' && !ft_pf_handle_cap_c(args, features, ret))
+    return (0);
   return (1);
 }

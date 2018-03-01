@@ -46,6 +46,7 @@ static int	ft_pf_symbols(char **str, int *ret, va_list args)
 		!ft_pf_store_type(str, &(features->type)) ||
 		!ft_pf_format(features, args, ret))
 		return (0);
+	ft_putchar('e');
 	free(features);
 	return (1);
 }

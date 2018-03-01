@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_pf_handle_strings.c                             :+:      :+:    :+:   */
+/*   ft_pf_handle_chars.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jszabo <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -13,35 +13,39 @@
 #include "../libft.h"
 #include "../ft_printf.h"
 
-int	ft_pf_handle_s(va_list args, t_print *features, int *ret)
+int     ft_pf_handle_c(va_list args, t_print *features, int *ret)
 {
-  char    *str;
+  char    c;
   char    *new;
   char    *spaces;
 
-      str = va_arg(args, char*);
-      if (!str)
-	  str = "(null)";
-      if (!(new = ft_strdup(str)) || 
-	  !ft_pf_precision_s(&new, features) ||
-	  !ft_pf_width_fl_zeros_left(&new, &spaces, features))
-	return (0);
-      ft_putstr(new);
-      *ret = *ret + ft_strlen(new);
-      free(new);
+  c = va_arg(args, int);
+  if (!c)
+    *ret = *ret + 1;
+  if (!(new = ft_strnew(1)))
+    return (0);
+  new[0] = c;
+  if (!ft_pf_width_fl_zeros_left(&new, &spaces, features))
+    return (0);
+  ft_putstr(new);
+  *ret = *ret + ft_strlen(new);;
+  free(new);
   return (1);
 }
 
-int     ft_pf_handle_cap_s(va_list args, t_print *features, int *ret)
+int     ft_pf_handle_cap_c(va_list args, t_print *features, int *ret)
 {
-  wchar_t    *str;
+  wchar_t    c;
   wchar_t    *new;
   wchar_t    *spaces;
- 
-      str = va_arg(args, wchar_t*);
-      if (!(new = ft_wstrdup(str)) ||
-	  !ft_pf_precision_cap_s(&new, features) ||
-	  !ft_pf_width_fl_zeros_left_cap_s(&new, &spaces, features))
+
+  c = va_arg(args, long long int);
+  if (!c)
+    *ret = *ret + 1;
+      if (!(new = ft_wstrnew(1)))
+	return (0);
+      new[0] = c;
+      if (!ft_pf_width_fl_zeros_left_cap_s(&new, &spaces, features))
 		return (0);
       ft_putwstr(new);
       *ret = *ret + ft_wstrlen(new);

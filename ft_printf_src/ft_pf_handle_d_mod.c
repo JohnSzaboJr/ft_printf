@@ -31,7 +31,7 @@ int     ft_pf_handle_hh_d(va_list args, t_print *features, int *ret)
 	char		*new;
 	char		*spaces;
 
-	c = (signed char)(va_arg(args, int));
+	c = (signed char)(va_arg(args, long long int));
 	str = ft_itoa(c);
 	if (!(ft_pf_handle_d_mod(&new, &str, &spaces, features)))
 	  return (0);
@@ -49,7 +49,7 @@ int     ft_pf_handle_h_d(va_list args, t_print *features, int *ret)
   char            *new;
   char            *spaces;
 
-  c = (short)(va_arg(args, int));
+  c = (short)(va_arg(args, long long int));
   str = ft_itoa(c);
   if (!(ft_pf_handle_d_mod(&new, &str, &spaces, features)))
     return (0);
@@ -85,7 +85,7 @@ int     ft_pf_handle_l_d(va_list args, t_print *features, int *ret)
   char            *new;
   char            *spaces;
 
-  c = (va_arg(args, long));
+  c = (long int)(va_arg(args, long long int));
   str = ft_longtoa(c);
   if (!(ft_pf_handle_d_mod(&new, &str, &spaces, features)))
     return (0);

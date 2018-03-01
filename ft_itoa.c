@@ -34,7 +34,7 @@ static	int		ft_determine_len(int n, int len)
 
 char			*ft_itoa(int n)
 {
-	int		neg;
+    int		neg;
 	int		len;
 	char	*ans;
 
