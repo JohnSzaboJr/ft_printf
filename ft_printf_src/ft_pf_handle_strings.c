@@ -39,6 +39,8 @@ int     ft_pf_handle_cap_s(va_list args, t_print *features, int *ret)
   wchar_t    *spaces;
  
       str = va_arg(args, wchar_t*);
+      if (!str)
+	str = L"(null)";
       if (!(new = ft_wstrdup(str)) ||
 	  !ft_pf_precision_cap_s(&new, features) ||
 	  !ft_pf_width_fl_zeros_left_cap_s(&new, &spaces, features))
