@@ -6,7 +6,7 @@
 /*   By: jszabo <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/14 10:33:32 by jszabo            #+#    #+#             */
-/*   Updated: 2018/03/01 14:07:17 by jszabo           ###   ########.fr       */
+/*   Updated: 2018/03/02 14:04:39 by jszabo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 # include <string.h>
 # include <stdlib.h>
 # include <unistd.h>
+# include <limits.h>
 
 typedef struct		s_list
 {
@@ -115,5 +116,6 @@ char				*ft_intmaxtoa(intmax_t n);
 char				*ft_sizetoa(size_t n);
 char				*ft_uitoa_base(unsigned long long value, int base);
 int					ft_putwchar(wchar_t c);
+int					ft_addtoa(char **num);
 
 #endif

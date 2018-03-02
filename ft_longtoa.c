@@ -6,7 +6,7 @@
 /*   By: jszabo <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/23 15:00:30 by jszabo            #+#    #+#             */
-/*   Updated: 2017/12/03 14:53:13 by jszabo           ###   ########.fr       */
+/*   Updated: 2018/03/02 14:03:10 by jszabo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,13 +25,20 @@ static	int		ft_determine_len(long n, int len)
 
 char			*ft_longtoa(long n)
 {
+	int		min;
 	int		neg;
 	int		len;
 	char	*ans;
 
 	len = 0;
+	min = 0;
+	if (n == LONG_MIN)
+	{
+		min = 1;
+		n++;
+	}
 	neg = (n < 0) ? 1 : 0;
-	n = (n < 0) ? -n : n;
+	n = neg ? -n : n;
 	len = ft_determine_len(n, len);
 	len = (n == 0 || neg) ? len + 1 : len;
 	if (!(ans = (char *)malloc(sizeof(*ans) * (len + 1))))
@@ -44,5 +51,7 @@ char			*ft_longtoa(long n)
 		len--;
 	}
 	ans[0] = (neg) ? '-' : ans[0];
+	if (min)
+		ft_addtoa(&ans);
 	return (ans);
 }
