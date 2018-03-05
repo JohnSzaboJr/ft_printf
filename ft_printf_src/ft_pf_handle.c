@@ -80,7 +80,7 @@ int     ft_pf_handle_chars(int *ret, va_list args, t_print *features)
 {
   if (features->type == 'c' && features->mod != 'l' && !(ft_pf_handle_c(args, features, ret)))
     return (0);
-  if (features->type == 'C' && features->mod == 'l' && !(ft_pf_handle_cap_c(args, features, ret)))
+  if (features->type == 'c' && features->mod == 'l' && !(ft_pf_handle_cap_c(args, features, ret)))
     return (0);
   if (features->type == 'C' && !ft_pf_handle_cap_c(args, features, ret))
     return (0);

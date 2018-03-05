@@ -12,6 +12,9 @@
 
 #include "../libft.h"
 #include "../ft_printf.h"
+//
+#include <stdio.h>
+//
 
 int     ft_pf_handle_j_d(va_list args, t_print *features, int *ret)
 {
@@ -21,7 +24,7 @@ int     ft_pf_handle_j_d(va_list args, t_print *features, int *ret)
 	char		*spaces;
 
 	c = (va_arg(args, intmax_t));
-	str = ft_intmaxtoa(c);
+	str = ft_longlongtoa(c);
 	if (!(ft_pf_handle_d_mod(&new, &str, &spaces, features)))
 	  return (0);
     ft_putstr(new);

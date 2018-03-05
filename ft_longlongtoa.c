@@ -27,9 +27,15 @@ char			*ft_longlongtoa(long long n)
 {
 	int		neg;
 	int		len;
+	int		min;
 	char	*ans;
 
 	len = 0;
+	if (n == LLONG_MIN)
+	  {
+	    min = 1;
+	    n++;
+	  }
 	neg = (n < 0) ? 1 : 0;
 	n = (n < 0) ? -n : n;
 	len = ft_determine_len(n, len);
@@ -44,5 +50,7 @@ char			*ft_longlongtoa(long long n)
 		len--;
 	}
 	ans[0] = (neg) ? '-' : ans[0];
+	if (min)
+	  ft_addtoa(&ans);
 	return (ans);
 }

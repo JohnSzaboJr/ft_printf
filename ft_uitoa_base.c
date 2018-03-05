@@ -30,12 +30,12 @@ static int	ft_find_length(unsigned long long value, int base)
 char		*ft_uitoa_base(unsigned long long value, int base)
 {
 	char			*ans;
-	unsigned int	tmp;
+	unsigned long long	tmp;
 	int				l;
 
 	l = 0;
 	if (base < 2 || base > 16)
-		return (NULL);
+	  return (NULL);
 	tmp = value;
 	l = ft_find_length(tmp, base);
 	ans = (char *)malloc(sizeof(*ans) * (l + 1));
