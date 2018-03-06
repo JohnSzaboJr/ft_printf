@@ -6,7 +6,7 @@
 /*   By: jszabo <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/24 15:52:47 by jszabo            #+#    #+#             */
-/*   Updated: 2018/02/24 16:11:33 by jszabo           ###   ########.fr       */
+/*   Updated: 2018/03/06 11:58:04 by jszabo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,9 +44,11 @@ int	ft_pf_alter(char **str, int alter)
 
 int	ft_pf_alter_x(char **str, t_print *features)
 {
-  if (features->fl_alter && !ft_pf_hex_sign(str))
-    return (0);
-  return (1);
+	if ((*str)[0] == '0')
+		features->fl_alter = 0;
+	if (features->fl_alter && !ft_pf_hex_sign(str))
+		return (0);
+	return (1);
 }
 
 int     ft_pf_alter_x_final(char **str, t_print *features)

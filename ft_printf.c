@@ -6,7 +6,7 @@
 /*   By: jszabo <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/08 10:59:10 by jszabo            #+#    #+#             */
-/*   Updated: 2018/03/02 11:31:02 by jszabo           ###   ########.fr       */
+/*   Updated: 2018/03/06 14:40:43 by jszabo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,8 @@ static int	ft_pf_format(t_print *features, va_list args, int *ret)
 		return (ft_pf_handle_numbers(ret, args, features));
 	if (t == 'c' || t == 'C')
 	  return (ft_pf_handle_chars(ret, args, features));
+	else if (t)
+		return (ft_pf_handle_others(features, ret));
 	return (1);
 }
 
@@ -87,7 +89,7 @@ int			ft_printf(char *format, ... )
 	}
 
 	// review parsing process for width and precision
-
+	free(str);
 	va_end(args);
 	return (ret);
 }

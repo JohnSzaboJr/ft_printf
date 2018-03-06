@@ -6,7 +6,7 @@
 /*   By: jszabo <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/09 14:13:26 by jszabo            #+#    #+#             */
-/*   Updated: 2018/02/24 18:43:35 by jszabo           ###   ########.fr       */
+/*   Updated: 2018/03/06 14:12:35 by jszabo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,5 +91,7 @@ int		ft_pf_alter_x_final(char **str, t_print *features);
 int		ft_pf_handle_chars(int *ret, va_list args, t_print *features);
 int             ft_pf_handle_c(va_list args, t_print *features, int *ret);
 int             ft_pf_handle_cap_c(va_list args, t_print *features, int *ret);
+int		ft_pf_width_fl_zeros_left_null_c(char **spaces, t_print *features);
+int     ft_pf_handle_others(t_print *features, int *ret);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: jszabo <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/12 16:53:24 by jszabo            #+#    #+#             */
-/*   Updated: 2018/03/02 14:14:54 by jszabo           ###   ########.fr       */
+/*   Updated: 2018/03/06 11:00:46 by jszabo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,10 +15,6 @@
 
 int		ft_pf_store_type(char **str, char *type)
 {
-	const char *types = "%sSpdDioOuUxXcC";
-
-	if (!ft_strchr(types, (*str)[0]))
-		return (1);
 	*type = (*str)[0];
 	*str = ft_memmove(*str, *str + 1, ft_strlen(*str));
 	return (1);
@@ -26,8 +22,8 @@ int		ft_pf_store_type(char **str, char *type)
 
 int		ft_pf_store_flags(char **str, t_print *features)
 {
-	const char  *flags = "-+ 0#";
-	int         i;
+	const char	*flags = "-+ 0#";
+	int			i;
 
 	i = 0;
 	if (!((*str)[0]))
@@ -64,7 +60,7 @@ int		ft_pf_store_num_width(char **str, size_t *target, va_list args)
 	{
 		*target = ft_atoi(*str);
 		*str = ft_memmove(*str, *str + ft_numlen(*target),
-                          ft_strlen(*str) - ft_numlen(*target) + 1);
+	ft_strlen(*str) - ft_numlen(*target) + 1);
 	}
 	else if ((*str)[0] == '*')
 	{
@@ -89,27 +85,27 @@ int		ft_pf_store_precision(char **str, t_print *features, va_list args)
 
 int		ft_pf_store_modifiers(char **str, t_print *features)
 {
-    const char  *mod_chars = "hljz";
+	const char	*mod_chars = "hljz";
 	char		*modifiers;
-    int         i;
+	int			i;
 
-    i = 0;
+	i = 0;
 	modifiers = NULL;
 	if (!((*str)[0]))
-	  return (1);
+		return (1);
 	while ((*str)[i] && ft_strchr(mod_chars, (*str)[i]))
-	  i++;
+		i++;
 	if (!i)
 		return (1);
-    if (!(modifiers = ft_strdiv(str, modifiers, i)))
-        return (0);
+	if (!(modifiers = ft_strdiv(str, modifiers, i)))
+		return (0);
 	i = 0;
-    if (modifiers[i] == 'h' && modifiers[i + 1] && modifiers[i + 1] == 'h')
+	if (modifiers[i] == 'h' && modifiers[i + 1] && modifiers[i + 1] == 'h')
 		features->mod = 'H';
-    else if (modifiers[i] == 'l' && modifiers[i + 1] && modifiers[i + 1] == 'l')
+	else if (modifiers[i] == 'l' && modifiers[i + 1] && modifiers[i + 1] == 'l')
 		features->mod = 'L';
-    else
-      	features->mod = modifiers[0];
-    free(modifiers);
-    return (1);
+	else
+		features->mod = modifiers[0];
+	free(modifiers);
+	return (1);
 }

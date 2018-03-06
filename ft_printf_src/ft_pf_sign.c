@@ -6,7 +6,7 @@
 /*   By: jszabo <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/14 14:49:38 by jszabo            #+#    #+#             */
-/*   Updated: 2018/02/20 15:30:28 by jszabo           ###   ########.fr       */
+/*   Updated: 2018/03/06 12:03:07 by jszabo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 int	ft_pf_hex_sign(char **str)
 {
-  const char	*hex = "0x";
+  const char	*hex = "0X";
   char		*tmp;
 
   if (!(tmp = ft_strjoin(hex, *str)))
@@ -29,8 +29,8 @@ int     ft_pf_hex_sign_zeros(char **str)
 {
   if ((*str)[1] == '0')
     {
-      *(ft_strchr(*str, 'x')) = '0';
-      (*str)[1] = 'x';
+      *(ft_strchr(*str, 'X')) = '0';
+      (*str)[1] = 'X';
     }
   return (1);
 }

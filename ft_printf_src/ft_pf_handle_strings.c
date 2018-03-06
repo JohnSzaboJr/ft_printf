@@ -6,7 +6,7 @@
 /*   By: jszabo <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/14 14:49:38 by jszabo            #+#    #+#             */
-/*   Updated: 2018/03/01 14:06:48 by jszabo           ###   ########.fr       */
+/*   Updated: 2018/03/06 11:26:35 by jszabo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,13 +34,13 @@ int	ft_pf_handle_s(va_list args, t_print *features, int *ret)
 
 int     ft_pf_handle_cap_s(va_list args, t_print *features, int *ret)
 {
-  wchar_t    *str;
-  wchar_t    *new;
-  wchar_t    *spaces;
+	wchar_t		*str;
+	wchar_t		*new;
+	wchar_t		*spaces;
  
-      str = va_arg(args, wchar_t*);
-      if (!str)
-	str = L"(null)";
+	str = va_arg(args, wchar_t*);
+	if (!str)
+		str = L"(null)";
       if (!(new = ft_wstrdup(str)) ||
 	  !ft_pf_precision_cap_s(&new, features) ||
 	  !ft_pf_width_fl_zeros_left_cap_s(&new, &spaces, features))

@@ -6,7 +6,7 @@
 /*   By: jszabo <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/23 15:00:30 by jszabo            #+#    #+#             */
-/*   Updated: 2017/12/03 14:53:13 by jszabo           ###   ########.fr       */
+/*   Updated: 2018/03/05 14:49:06 by jszabo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ char			*ft_longlongtoa(long long n)
 	char	*ans;
 
 	len = 0;
+	min = 0;
 	if (n == LLONG_MIN)
 	  {
 	    min = 1;

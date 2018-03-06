@@ -6,7 +6,7 @@
 /*   By: jszabo <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/14 14:49:38 by jszabo            #+#    #+#             */
-/*   Updated: 2018/02/24 11:22:08 by jszabo           ###   ########.fr       */
+/*   Updated: 2018/03/06 12:07:20 by jszabo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,9 @@ int	ft_pf_handle_pointers(int *ret, va_list args, t_print *features)
   char		*str;
   char		*new;
   char		*spaces;
+  int		i;
 
+  i = 0;
   ptr = (size_t)(va_arg(args, void*));
   str = ft_sizettohexa(ptr);
   if (!(new = ft_strdup(str)) ||
@@ -46,6 +48,11 @@ int	ft_pf_handle_pointers(int *ret, va_list args, t_print *features)
       !ft_pf_width_fl_zeros_left(&new, &spaces, features) ||
       !ft_pf_hex_sign_zeros(&new))
     return (0);
+  while (new[i])
+  {
+      new[i] = ft_tolower(new[i]);
+      i++;
+  }
   free(str);
   ft_putstr(new);
   *ret = *ret + ft_strlen(new);
