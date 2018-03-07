@@ -6,28 +6,41 @@
 /*   By: jszabo <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/14 14:49:38 by jszabo            #+#    #+#             */
-/*   Updated: 2018/03/06 12:07:20 by jszabo           ###   ########.fr       */
+/*   Updated: 2018/03/07 16:23:16 by jszabo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../libft.h"
 #include "../ft_printf.h"
 
-int	ft_pf_handle_percent(int *ret)
+int		ft_pf_handle_others(t_print *features, int *ret)
 {
-	ft_putchar('%');
-	(*ret)++;
+	char	c;
+    char	*new;
+    char	*spaces;
+
+	c = features->type;
+	if (!(new = ft_strnew(1)))
+		return (0);
+	new[0] = c;
+	if (!ft_pf_width_fl_zeros_left(&new, &spaces, features))
+		return (0);
+	ft_putstr(new);
+	*ret = *ret + ft_strlen(new);
+	free(new);
 	return (1);
 }
 
-int	ft_pf_handle_strings(int *ret, va_list args, t_print *features)
+int		ft_pf_handle_strings(int *ret, va_list args, t_print *features)
 {
-  if (features->type == 's' && features->mod != 'l' && !(ft_pf_handle_s(args, features, ret)))
-	return (0);
-  if (features->type == 's' && features->mod == 'l' && !(ft_pf_handle_cap_s(args, features, ret)))
-    	return (0);
-  if (features->type == 'S' && !ft_pf_handle_cap_s(args, features, ret))
-	return (0);
+	if (features->type == 's' && features->mod != 'l' &&
+	!(ft_pf_handle_s(args, features, ret)))
+		return (0);
+	if (features->type == 's' && features->mod == 'l' &&
+	!(ft_pf_handle_cap_s(args, features, ret)))
+		return (0);
+	if (features->type == 'S' && !ft_pf_handle_cap_s(args, features, ret))
+		return (0);
 	return (1);
 }
 

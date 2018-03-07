@@ -6,7 +6,7 @@
 /*   By: jszabo <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/08 10:59:10 by jszabo            #+#    #+#             */
-/*   Updated: 2018/03/06 14:40:43 by jszabo           ###   ########.fr       */
+/*   Updated: 2018/03/07 16:18:02 by jszabo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,6 @@ static int	ft_pf_format(t_print *features, va_list args, int *ret)
 	char t;
 
 	t = features->type;
-	if (t == '%')
-		return (ft_pf_handle_percent(ret));
 	if (t == 'S' || t == 's')
 		return (ft_pf_handle_strings(ret, args, features));
 	if (t == 'p')

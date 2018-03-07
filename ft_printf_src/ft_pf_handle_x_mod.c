@@ -6,30 +6,30 @@
 /*   By: jszabo <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/14 14:49:38 by jszabo            #+#    #+#             */
-/*   Updated: 2018/02/24 18:58:44 by jszabo           ###   ########.fr       */
+/*   Updated: 2018/03/07 12:18:17 by jszabo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../libft.h"
 #include "../ft_printf.h"
 
-int	ft_pf_handle_x_mod(char **new, char **str, char **spaces, t_print *features)
+int		ft_pf_handle_x_mod(char **new, char **str, char **spaces, t_print *features)
 {
-  int i;
+	int i;
 
-  i = 0;
-  if (!(*new = ft_strdup(*str)) ||
-      !ft_pf_precision_num(new, features) ||
-      !ft_pf_alter_x(new, features) ||
-      !ft_pf_width_fl_zeros_left(new, spaces, features) ||
-      !ft_pf_alter_x_final(new, features)) 
-	return (0);
-  while ((*new)[i] && features->type == 'x')
-    {
-      (*new)[i] = ft_tolower((*new)[i]); 
-      i++;
-    }
-  return (1);
+	i = 0;
+	if (!(*new = ft_strdup(*str)) ||
+	!ft_pf_precision_num(new, features) ||
+	!ft_pf_alter_x(new, features) ||
+	!ft_pf_width_fl_zeros_left(new, spaces, features) ||
+	!ft_pf_alter_x_final(new, features)) 
+		return (0);
+	while ((*new)[i] && features->type == 'x')
+	{
+		(*new)[i] = ft_tolower((*new)[i]); 
+		i++;
+	}
+	return (1);
 }
 
 int     ft_pf_handle_no_x(va_list args, t_print *features, int *ret)

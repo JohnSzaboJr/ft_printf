@@ -6,7 +6,7 @@
 /*   By: jszabo <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/09 14:13:26 by jszabo            #+#    #+#             */
-/*   Updated: 2018/03/06 14:12:35 by jszabo           ###   ########.fr       */
+/*   Updated: 2018/03/07 16:18:53 by jszabo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,6 @@ int		ft_pf_store_num_width(char **str, size_t *target, va_list args);
 int		ft_pf_store_precision(char **str, t_print *features, va_list args);
 int		ft_pf_store_modifiers(char **str, t_print *features);
 int		ft_pf_store_type(char **str, char *type);
-int		ft_pf_handle_percent(int *ret);
 int		ft_pf_handle_strings(int *ret, va_list args, t_print *features);
 int		ft_pf_handle_pointers(int *ret, va_list args, t_print *features);
 int		ft_pf_handle_numbers(int *ret, va_list args, t_print *features);
