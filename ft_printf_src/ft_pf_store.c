@@ -100,7 +100,9 @@ int		ft_pf_store_modifiers(char **str, t_print *features)
 	if (!(modifiers = ft_strdiv(str, modifiers, i)))
 		return (0);
 	i = 0;
-	if (modifiers[i] == 'h' && modifiers[i + 1] && modifiers[i + 1] == 'h')
+	if (ft_strchr(modifiers, 'l'))
+	    features->mod = 'l';
+	else if (modifiers[i] == 'h' && modifiers[i + 1] && modifiers[i + 1] == 'h')
 		features->mod = 'H';
 	else if (modifiers[i] == 'l' && modifiers[i + 1] && modifiers[i + 1] == 'l')
 		features->mod = 'L';

@@ -47,13 +47,15 @@ int		ft_pf_precision_num(char **str, t_print *features)
 {
 	char	*spaces;
 	char	*new;
+	char	*alter;
 	size_t	len;
 
 	if ((*str)[0] == '0' && (features->type == 'x' || features->type == 'X'))
 		features->fl_alter = 0;
 	(*str)[0] = ((*str)[0] == '0' && !(features->fl_alter) &&
 	features->is_precision) ? '\0' : (*str)[0];
-	len = ((*str)[0] == '-') ? ft_strlen(*str) - 1 : ft_strlen(*str);
+	len = ((*str)[0] == '-' || (*str)[0] == '+')
+	? ft_strlen(*str) - 1 : ft_strlen(*str);
 	if (features->precision > len)
 	{
 		if (!(spaces = ft_strnew(features->precision - len)))
@@ -67,5 +69,13 @@ int		ft_pf_precision_num(char **str, t_print *features)
 	}
 	if (features->is_precision)
 		features->fl_prep_zeros = 0;
+	if ((features->type == 'o' || features->type == 'O') 
+	&& features->fl_alter && (*str)[0] != '0')
+	  {
+	    if (!(alter = ft_strjoin("0", *str)))
+		return (0);
+	    free(*str);
+	    *str = alter;
+	  }	
 	return (1);
 }

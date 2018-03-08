@@ -17,8 +17,7 @@ int	ft_pf_handle_o_mod(char **new, char **str, char **spaces, t_print *features)
 {
   if (!(*new = ft_strdup(*str)) ||
       !ft_pf_precision_num(new, features) ||
-      !ft_pf_width_fl_zeros_left(new, spaces, features) ||
-	  !ft_pf_alter(new, features->fl_alter)) 
+      !ft_pf_width_fl_zeros_left(new, spaces, features)) 
 	return (0);
   return (1);
 }

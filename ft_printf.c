@@ -42,7 +42,8 @@ static int	ft_pf_symbols(char **str, int *ret, va_list args)
 		!ft_pf_store_flags(str, features) ||
 		!ft_pf_store_num_width(str, &(features->width), args) ||
 		!ft_pf_store_precision(str, features, args) ||
-		!ft_pf_store_modifiers(str, features) || 
+		!ft_pf_store_modifiers(str, features) ||
+		!ft_pf_store_flags(str, features) ||
 		!ft_pf_store_type(str, &(features->type)) ||
 		!ft_pf_format(features, args, ret))
 		return (0);
