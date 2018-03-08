@@ -6,7 +6,7 @@
 /*   By: jszabo <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/12 16:53:24 by jszabo            #+#    #+#             */
-/*   Updated: 2018/03/06 11:00:46 by jszabo           ###   ########.fr       */
+/*   Updated: 2018/03/08 16:22:10 by jszabo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,8 +52,11 @@ int		ft_pf_store_flags(char **str, t_print *features)
 	return (1);
 }
 
-int		ft_pf_store_num_width(char **str, size_t *target, va_list args)
+int		ft_pf_store_num_width(char **str, size_t *target, va_list args, t_print *features)
 {
+	int num;
+
+	num = 0;
 	if (!((*str)[0]))
 		return (1);
 	if (ft_isdigit((*str)[0]))
@@ -64,7 +67,14 @@ int		ft_pf_store_num_width(char **str, size_t *target, va_list args)
 	}
 	else if ((*str)[0] == '*')
 	{
-		*target = va_arg(args, int);
+		num = va_arg(args, int);
+		if (num < 0)
+		{
+			features->fl_left_just = 1;
+			features->fl_prep_zeros = 0;
+			num = -num;
+		}
+		*target = num;
 		*str = ft_memmove(*str, *str + 1, ft_strlen(*str));
 	}
 	return (1);
@@ -72,14 +82,25 @@ int		ft_pf_store_num_width(char **str, size_t *target, va_list args)
 
 int		ft_pf_store_precision(char **str, t_print *features, va_list args)
 {
+	int i;
+
+	i = 0;
 	if (!((*str)[0]))
 		return (1);
-	if ((*str)[0] == '.')
+	while ((*str)[i] == '.')
+		i++;
+	if (i)
 	{
 		features->is_precision = 1;
-		*str = ft_memmove(*str, *str + 1, ft_strlen(*str));
-		ft_pf_store_num_width(str, &(features->precision), args);
+		*str = ft_memmove(*str, *str + i, ft_strlen(*str) - i + 1);
+		if (!ft_isdigit((*str)[0]) && (*str)[0] != '*')
+			features->precision = 0;
+		else
+			ft_pf_store_num_width(str, &(features->precision), args, features);
 	}
+	else
+		return (1);
+	ft_pf_store_precision(str, features, args);
 	return (1);
 }
 
@@ -101,7 +122,7 @@ int		ft_pf_store_modifiers(char **str, t_print *features)
 		return (0);
 	i = 0;
 	if (ft_strchr(modifiers, 'l'))
-	    features->mod = 'l';
+		features->mod = 'l';
 	else if (modifiers[i] == 'h' && modifiers[i + 1] && modifiers[i + 1] == 'h')
 		features->mod = 'H';
 	else if (modifiers[i] == 'l' && modifiers[i + 1] && modifiers[i + 1] == 'l')

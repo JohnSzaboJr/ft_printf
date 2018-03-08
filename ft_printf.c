@@ -6,7 +6,7 @@
 /*   By: jszabo <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/08 10:59:10 by jszabo            #+#    #+#             */
-/*   Updated: 2018/03/07 16:18:02 by jszabo           ###   ########.fr       */
+/*   Updated: 2018/03/08 16:19:52 by jszabo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,8 @@ static int	ft_pf_symbols(char **str, int *ret, va_list args)
 		!ft_pf_struct_init(features) ||
 		!ft_stroneleft(str) ||
 		!ft_pf_store_flags(str, features) ||
-		!ft_pf_store_num_width(str, &(features->width), args) ||
+		!ft_pf_store_num_width(str, &(features->width), args, features) ||
+		!ft_pf_store_flags(str, features) ||
 		!ft_pf_store_precision(str, features, args) ||
 		!ft_pf_store_modifiers(str, features) ||
 		!ft_pf_store_flags(str, features) ||

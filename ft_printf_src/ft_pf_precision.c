@@ -6,7 +6,7 @@
 /*   By: jszabo <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/15 10:52:42 by jszabo            #+#    #+#             */
-/*   Updated: 2018/03/07 16:10:50 by jszabo           ###   ########.fr       */
+/*   Updated: 2018/03/08 15:43:34 by jszabo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,13 +69,13 @@ int		ft_pf_precision_num(char **str, t_print *features)
 	}
 	if (features->is_precision)
 		features->fl_prep_zeros = 0;
-	if ((features->type == 'o' || features->type == 'O') 
+	if ((features->type == 'o' || features->type == 'O')
 	&& features->fl_alter && (*str)[0] != '0')
-	  {
-	    if (!(alter = ft_strjoin("0", *str)))
-		return (0);
-	    free(*str);
-	    *str = alter;
-	  }	
+	{
+		if (!(alter = ft_strjoin("0", *str)))
+			return (0);
+		free(*str);
+		*str = alter;
+	}
 	return (1);
 }

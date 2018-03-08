@@ -6,7 +6,7 @@
 /*   By: jszabo <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/09 14:13:26 by jszabo            #+#    #+#             */
-/*   Updated: 2018/03/07 16:18:53 by jszabo           ###   ########.fr       */
+/*   Updated: 2018/03/08 16:20:15 by jszabo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ typedef struct	s_struct
 }				t_print;
 
 int		ft_pf_store_flags(char **str, t_print *features);
-int		ft_pf_store_num_width(char **str, size_t *target, va_list args);
+int		ft_pf_store_num_width(char **str, size_t *target, va_list args, t_print *features);
 int		ft_pf_store_precision(char **str, t_print *features, va_list args);
 int		ft_pf_store_modifiers(char **str, t_print *features);
 int		ft_pf_store_type(char **str, char *type);
