@@ -23,7 +23,7 @@ static int	ft_pf_format(t_print *features, va_list args, int *ret)
 	if (t == 'p')
 	  	return (ft_pf_handle_pointers(ret, args, features));
 	if (t == 'd' || t == 'D' || t == 'i' || t == 'o' || t == 'O' ||
-	    t == 'u' || t == 'U' || t == 'x' || t == 'X')
+	    t == 'u' || t == 'U' || t == 'x' || t == 'X' || t == 'f' || t == 'F')
 		return (ft_pf_handle_numbers(ret, args, features));
 	if (t == 'c' || t == 'C')
 	  return (ft_pf_handle_chars(ret, args, features));
