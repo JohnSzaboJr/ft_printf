@@ -6,7 +6,7 @@
 /*   By: jszabo <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/14 10:33:32 by jszabo            #+#    #+#             */
-/*   Updated: 2018/03/02 14:04:39 by jszabo           ###   ########.fr       */
+/*   Updated: 2018/03/11 11:21:35 by jszabo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -117,5 +117,6 @@ char				*ft_sizetoa(size_t n);
 char				*ft_uitoa_base(unsigned long long value, int base);
 int					ft_putwchar(wchar_t c);
 int					ft_addtoa(char **num);
+char				*ft_ftoa(double n, size_t pr);
 
 #endif

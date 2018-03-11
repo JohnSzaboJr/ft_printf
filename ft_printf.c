@@ -6,7 +6,7 @@
 /*   By: jszabo <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/08 10:59:10 by jszabo            #+#    #+#             */
-/*   Updated: 2018/03/08 16:19:52 by jszabo           ###   ########.fr       */
+/*   Updated: 2018/03/11 14:43:50 by jszabo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,7 +88,9 @@ int			ft_printf(char *format, ... )
 		}
 	}
 
-	// review parsing process for width and precision
+	// nagy szamok atalakitasa
+// kerekites?
+// vegen nagybetuk NaN IN
 	free(str);
 	va_end(args);
 	return (ret);

@@ -6,7 +6,7 @@
 /*   By: jszabo <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/12 16:53:24 by jszabo            #+#    #+#             */
-/*   Updated: 2018/03/08 16:22:10 by jszabo           ###   ########.fr       */
+/*   Updated: 2018/03/11 09:49:38 by jszabo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,8 @@ int		ft_pf_store_flags(char **str, t_print *features)
 	return (1);
 }
 
-int		ft_pf_store_num_width(char **str, size_t *target, va_list args, t_print *features)
+int		ft_pf_store_num_width(char **str, size_t *target, va_list args,
+	t_print *features)
 {
 	int num;
 
@@ -78,7 +79,7 @@ int		ft_pf_store_num_width(char **str, size_t *target, va_list args, t_print *fe
 		*str = ft_memmove(*str, *str + 1, ft_strlen(*str));
 	}
 	if ((*str)[0] == '*' || ft_isdigit((*str)[0]))
-	 	ft_pf_store_num_width(str, target, args, features);
+		ft_pf_store_num_width(str, target, args, features);
 	return (1);
 }
 

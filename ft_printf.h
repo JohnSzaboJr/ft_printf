@@ -6,7 +6,7 @@
 /*   By: jszabo <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/09 14:13:26 by jszabo            #+#    #+#             */
-/*   Updated: 2018/03/08 16:20:15 by jszabo           ###   ########.fr       */
+/*   Updated: 2018/03/11 10:24:44 by jszabo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,5 +92,9 @@ int             ft_pf_handle_c(va_list args, t_print *features, int *ret);
 int             ft_pf_handle_cap_c(va_list args, t_print *features, int *ret);
 int		ft_pf_width_fl_zeros_left_null_c(char **spaces, t_print *features);
 int     ft_pf_handle_others(t_print *features, int *ret);
+int     ft_pf_handle_f(va_list args, t_print *features, int *ret);
+int ft_pf_handle_f_mod(char **new, char **str, char **spaces, t_print *features);
+int     ft_pf_handle_no_f(va_list args, t_print *features, int *ret);
+int     ft_pf_handle_ll_f(va_list args, t_print *features, int *ret);
 
 #endif

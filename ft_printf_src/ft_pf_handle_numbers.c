@@ -6,7 +6,7 @@
 /*   By: jszabo <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/14 14:49:38 by jszabo            #+#    #+#             */
-/*   Updated: 2018/02/24 18:58:17 by jszabo           ###   ########.fr       */
+/*   Updated: 2018/03/11 10:17:49 by jszabo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,4 +87,13 @@ int     ft_pf_handle_x(va_list args, t_print *features, int *ret)
   if (features->mod == 'z' && !ft_pf_handle_z_x(args, features, ret))
     return (0);
   return (1);
+}
+
+int     ft_pf_handle_f(va_list args, t_print *features, int *ret)
+{
+	if (!(features->mod) && !ft_pf_handle_no_f(args, features, ret))
+		return (0);
+	if (features->mod == 'L' && !ft_pf_handle_ll_f(args, features, ret))
+		return (0);
+	return (1);
 }
