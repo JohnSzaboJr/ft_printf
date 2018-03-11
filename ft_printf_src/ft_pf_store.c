@@ -77,14 +77,18 @@ int		ft_pf_store_num_width(char **str, size_t *target, va_list args, t_print *fe
 		*target = num;
 		*str = ft_memmove(*str, *str + 1, ft_strlen(*str));
 	}
+	if ((*str)[0] == '*' || ft_isdigit((*str)[0]))
+	 	ft_pf_store_num_width(str, target, args, features);
 	return (1);
 }
 
 int		ft_pf_store_precision(char **str, t_print *features, va_list args)
 {
 	int i;
+	int pr;
 
 	i = 0;
+	pr = 0;
 	if (!((*str)[0]))
 		return (1);
 	while ((*str)[i] == '.')
@@ -95,6 +99,14 @@ int		ft_pf_store_precision(char **str, t_print *features, va_list args)
 		*str = ft_memmove(*str, *str + i, ft_strlen(*str) - i + 1);
 		if (!ft_isdigit((*str)[0]) && (*str)[0] != '*')
 			features->precision = 0;
+		else if ((*str)[0] == '*')
+		  {
+		  	pr = va_arg(args, int);
+			if (pr < 0)
+			  features->is_precision = 0;
+			features->precision = pr < 0 ? 0 : pr;
+			*str = ft_memmove(*str, *str + 1, ft_strlen(*str));
+		  }
 		else
 			ft_pf_store_num_width(str, &(features->precision), args, features);
 	}
