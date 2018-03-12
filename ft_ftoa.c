@@ -12,6 +12,8 @@
 
 #include <stdlib.h>
 #include "libft.h"
+//
+#include <stdio.h>
 
 static	int		ft_determine_len(int n, int len)
 {
@@ -20,27 +22,28 @@ static	int		ft_determine_len(int n, int len)
 		n = (n - (n % 10)) / 10;
 		len++;
 	}
-	return (len + 1);
+	return (len);
 }
 
 char			*ft_ftoa(double n, size_t pr)
 {
-    int		neg;
 	int		len;
 	char	*ans;
 	long long		tmp;
+	double tmp2;
 	char		*beg;
 
-	if (!(beg = ft_longlongtoa((long long)n)))
+	if (!(beg = n < 0 ? ft_longlongtoa((long long)(n - 1e-9)) :
+	ft_longlongtoa((long long)(n + 1e-9))))
 		return (NULL);
 	if (!pr)
 		return (beg);
-	tmp = (long long)(n * ft_recursive_power(10, (int)pr));
+        n = (n < 0) ? -n : n;
+	tmp2 = ((n - (long long)n) * ft_recursive_power(10, (int)pr));
+	tmp = tmp2 + 1e-9;
 	len = 0;
-	neg = (tmp < 0) ? 1 : 0;
-	tmp = (tmp < 0) ? -tmp : tmp;
 	len = ft_determine_len(tmp, len);
-	len = (tmp == 0 || neg) ? len + 1 : len;
+	len = ft_strlen(beg) + len + 1;
 	if (!(ans = (char *)malloc(sizeof(*ans) * (len + 1))))
 		return (NULL);
 	ans[len] = '\0';
@@ -50,7 +53,6 @@ char			*ft_ftoa(double n, size_t pr)
 		tmp = (tmp - (tmp % 10)) / 10;
 		len--;
 	}
-	ans[0] = (neg) ? '-' : '0';
 	len = ft_strlen(ans);
 	ans = ft_strcpy(ans, beg);
 	ans[len - pr - 1] = '.';
