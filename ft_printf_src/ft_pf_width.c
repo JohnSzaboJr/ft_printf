@@ -6,7 +6,7 @@
 /*   By: jszabo <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/15 13:03:32 by jszabo            #+#    #+#             */
-/*   Updated: 2018/03/07 16:15:43 by jszabo           ###   ########.fr       */
+/*   Updated: 2018/03/12 15:52:51 by jszabo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,30 +17,20 @@ int	ft_pf_width_fl_zeros_left(char **str, char **spaces, t_print *features)
 {
 	char	*tmp;
 
-	tmp = NULL;
 	if (features->width > ft_strlen(*str))
 	{
 		if (!((*spaces) = ft_strnew(features->width - ft_strlen(*str))))
 			return (0);
-		if (features->fl_prep_zeros)
-			*spaces = ft_strnfill(*spaces, '0',
-	(features->width - ft_strlen(*str)));
-		else
-			*spaces = ft_strnfill(*spaces, ' ',
-	(features->width - ft_strlen(*str)));
-		if (!ft_strlen(*str))
-			tmp = ft_strdup(*spaces);
-		else if (features->fl_left_just &&
-	!(tmp = ft_strjoin(*str, *spaces)))
-			return (0);
-		else if (!(features->fl_left_just) &&
-	!(tmp = ft_strjoin(*spaces, *str)))
-			return (0);
+		*spaces = (features->fl_prep_zeros) ?
+			ft_strnfill(*spaces, '0', features->width - ft_strlen(*str)) :
+			ft_strnfill(*spaces, ' ', features->width - ft_strlen(*str));
+		tmp = (features->fl_left_just) ? ft_strjoin(*str, *spaces) :
+			ft_strjoin(*spaces, *str);
 		free(*str);
 		free(*spaces);
 		*str = tmp;
 	}
-	return (1);
+	return (*str) ? (1) : (0);
 }
 
 int	ft_pf_width_fl_zeros_left_null_c(char **spaces, t_print *features)
@@ -49,30 +39,18 @@ int	ft_pf_width_fl_zeros_left_null_c(char **spaces, t_print *features)
 	{
 		if (!((*spaces) = ft_strnew(features->width - 1)))
 			return (0);
-		if (features->fl_prep_zeros)
-			*spaces = ft_strnfill(*spaces, '0',
-	(features->width - 1));
-		else
-			*spaces = ft_strnfill(*spaces, ' ',
-	(features->width - 1));
+		*spaces = (features->fl_prep_zeros) ?
+			ft_strnfill(*spaces, '0', features->width - 1) :
+			ft_strnfill(*spaces, ' ', features->width - 1);
 		if (features->fl_left_just)
-		{
-			write(1, "\0", 1);
-			ft_putstr(*spaces);
-		}
-		else
-		{
-			ft_putstr(*spaces);
-			write(1, "\0", 1);
-		}
+			ft_putchar('\0');
+		ft_putstr(*spaces);
 	}
 	else
-	{
-		if (!((*spaces) = ft_strnew(0)))
-			return (0);
-		write(1, "\0", 1);
-	}
-	return (1);
+		*spaces = ft_strnew(0);
+	if (!(features->fl_left_just) || !(features->width))
+		ft_putchar('\0');
+	return (*spaces) ? (1) : (0);
 }
 
 int	ft_pf_width_fl_zeros_left_cap_s
@@ -85,12 +63,9 @@ int	ft_pf_width_fl_zeros_left_cap_s
 	{
 		if (!((*spaces) = ft_wstrnew((int)features->width - ft_wstrlen(*str))))
 			return (0);
-		if (features->fl_prep_zeros)
-			*spaces = ft_wstrnfill(*spaces, L'0',
-	((int)features->width - ft_wstrlen(*str)));
-		else
-			*spaces = ft_wstrnfill(*spaces, L' ',
-	((int)features->width - ft_wstrlen(*str)));
+		*spaces = (features->fl_prep_zeros) ?
+	ft_wstrnfill(*spaces, L'0', (int)features->width - ft_wstrlen(*str)) :
+	ft_wstrnfill(*spaces, L' ', (int)features->width - ft_wstrlen(*str));
 		if (!ft_wstrlen(*str))
 			tmp = ft_wstrdup(*spaces);
 		else if (features->fl_left_just &&

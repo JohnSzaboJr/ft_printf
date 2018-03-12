@@ -6,7 +6,7 @@
 /*   By: jszabo <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/08 10:59:10 by jszabo            #+#    #+#             */
-/*   Updated: 2018/03/11 14:43:50 by jszabo           ###   ########.fr       */
+/*   Updated: 2018/03/12 15:37:40 by jszabo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,10 +41,8 @@ static int	ft_pf_symbols(char **str, int *ret, va_list args)
 		!ft_stroneleft(str) ||
 		!ft_pf_store_flags(str, features) ||
 		!ft_pf_store_num_width(str, &(features->width), args, features) ||
-		!ft_pf_store_flags(str, features) ||
 		!ft_pf_store_precision(str, features, args) ||
 		!ft_pf_store_modifiers(str, features) ||
-		!ft_pf_store_flags(str, features) ||
 		!ft_pf_store_type(str, &(features->type)) ||
 		!ft_pf_format(features, args, ret))
 		return (0);
@@ -52,14 +50,21 @@ static int	ft_pf_symbols(char **str, int *ret, va_list args)
 	return (1);
 }
 
-int			ft_printf(char *format, ... )
+int			ft_pf_print(char **str, int *ret)
+{
+	ft_putstr(*str);
+	*ret = *ret + ft_strlen(*str);
+	free(*str);
+	return (*ret);
+}
+
+int			ft_printf(char *format, ...)
 {
 	va_list args;
 	int		ret;
 	char	*out;
 	char	*str;
 
-	out = NULL;
 	ret = 0;
 	if (!(str = ft_strdup(format)))
 		return (-1);
@@ -67,31 +72,24 @@ int			ft_printf(char *format, ... )
 	while (str[0])
 	{
 		if (ft_strchlen(str, '%') < 0)
-		{
-			ft_putstr(str);
-			ret = ret + ft_strlen(str);
-			free(str);
-			return (ret);
-		}
-		if (ft_strchlen(str, '%') > 0)
-		{
-			if (!(out = ft_strdiv(&str, out, ft_strchlen(str, '%'))))
-				return (-1);
-			ft_putstr(out);
-			ret = ret + ft_strlen(out);
-			free(out);
-		}
-		else
-		{
-			if (!ft_pf_symbols(&str, &ret, args))
-				return (-1);
-		}
+			return (ft_pf_print(&str, &ret));
+		if (ft_strchlen(str, '%') > 0 &&
+	(!(out = ft_strdiv(&str, out, ft_strchlen(str, '%'))) ||
+	!ft_pf_print(&out, &ret)))
+			return (-1);
+		else if (!ft_pf_symbols(&str, &ret, args))
+			return (-1);
 	}
-
-	// nagy szamok atalakitasa
-// kerekites?
-// vegen nagybetuk NaN IN
 	free(str);
 	va_end(args);
 	return (ret);
 }
+
+// bonus -
+// norm -
+// streamline -
+// nem kello functionok
+// makefile
+
+// kerekites?
+// vegen nagybetuk NaN IN

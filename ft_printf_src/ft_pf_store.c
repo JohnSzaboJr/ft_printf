@@ -6,7 +6,7 @@
 /*   By: jszabo <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/12 16:53:24 by jszabo            #+#    #+#             */
-/*   Updated: 2018/03/11 09:49:38 by jszabo           ###   ########.fr       */
+/*   Updated: 2018/03/12 15:47:21 by jszabo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,15 +37,9 @@ int		ft_pf_store_flags(char **str, t_print *features)
 		if ((*str)[i] == '#')
 			features->fl_alter = 1;
 		if ((*str)[i] == '+')
-		{
-			features->fl_signed_num = 1;
-			features->fl_sign_space = 0;
-		}
+			ft_pf_set_signed(features);
 		if ((*str)[i] == '-')
-		{
-			features->fl_left_just = 1;
-			features->fl_prep_zeros = 0;
-		}
+			ft_pf_set_left(features);
 		i++;
 	}
 	*str = ft_memmove(*str, *str + i, ft_strlen(*str) - i + 1);
@@ -58,8 +52,6 @@ int		ft_pf_store_num_width(char **str, size_t *target, va_list args,
 	int num;
 
 	num = 0;
-	if (!((*str)[0]))
-		return (1);
 	if (ft_isdigit((*str)[0]))
 	{
 		*target = ft_atoi(*str);
@@ -80,6 +72,7 @@ int		ft_pf_store_num_width(char **str, size_t *target, va_list args,
 	}
 	if ((*str)[0] == '*' || ft_isdigit((*str)[0]))
 		ft_pf_store_num_width(str, target, args, features);
+	ft_pf_store_flags(str, features);
 	return (1);
 }
 
@@ -90,8 +83,6 @@ int		ft_pf_store_precision(char **str, t_print *features, va_list args)
 
 	i = 0;
 	pr = 0;
-	if (!((*str)[0]))
-		return (1);
 	while ((*str)[i] == '.')
 		i++;
 	if (i)
@@ -125,23 +116,19 @@ int		ft_pf_store_modifiers(char **str, t_print *features)
 
 	i = 0;
 	modifiers = NULL;
-	if (!((*str)[0]))
-		return (1);
 	while ((*str)[i] && ft_strchr(mod_chars, (*str)[i]))
 		i++;
-	if (!i)
-		return (1);
 	if (!(modifiers = ft_strdiv(str, modifiers, i)))
 		return (0);
-	i = 0;
 	if (ft_strchr(modifiers, 'l'))
 		features->mod = 'l';
-	else if (modifiers[i] == 'h' && modifiers[i + 1] && modifiers[i + 1] == 'h')
+	else if (modifiers[0] == 'h' && modifiers[1] && modifiers[1] == 'h')
 		features->mod = 'H';
-	else if (modifiers[i] == 'l' && modifiers[i + 1] && modifiers[i + 1] == 'l')
+	else if (modifiers[0] == 'l' && modifiers[1] && modifiers[1] == 'l')
 		features->mod = 'L';
-	else
+	else if (i)
 		features->mod = modifiers[0];
 	free(modifiers);
+	ft_pf_store_flags(str, features);
 	return (1);
 }

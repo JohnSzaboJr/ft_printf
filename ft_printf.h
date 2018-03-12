@@ -6,7 +6,7 @@
 /*   By: jszabo <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/09 14:13:26 by jszabo            #+#    #+#             */
-/*   Updated: 2018/03/11 10:24:44 by jszabo           ###   ########.fr       */
+/*   Updated: 2018/03/12 15:01:18 by jszabo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,8 @@ typedef struct	s_struct
 	int		fl_alter;
 	size_t	width;
 	size_t	precision;
-  int		is_precision;
-	char		mod;
+	int		is_precision;
+	char	mod;
 	char	type;
 }				t_print;
 
@@ -59,27 +59,27 @@ int		ft_pf_handle_no_o(va_list args, t_print *features, int *ret);
 int     ft_pf_handle_hh_o(va_list args, t_print *features, int *ret);
 int		ft_pf_handle_h_o(va_list args, t_print *features, int *ret);
 int		ft_pf_handle_ll_o(va_list args, t_print *features, int *ret);
-int             ft_pf_handle_l_o(va_list args, t_print *features, int *ret);
-int             ft_pf_handle_j_o(va_list args, t_print *features, int *ret);
-int             ft_pf_handle_z_o(va_list args, t_print *features, int *ret);
-int             ft_pf_handle_u(va_list args, t_print *features, int *ret);
-int             ft_pf_handle_u_mod(char **new, char **str, char **spaces, t_print *features);
-int             ft_pf_handle_no_u(va_list args, t_print *features, int *ret);
-int     ft_pf_handle_hh_u(va_list args, t_print *features, int *ret);
-int             ft_pf_handle_h_u(va_list args, t_print *features, int *ret);
-int             ft_pf_handle_ll_u(va_list args, t_print *features, int *ret);
-int             ft_pf_handle_l_u(va_list args, t_print *features, int *ret);
-int             ft_pf_handle_j_u(va_list args, t_print *features, int *ret);
-int             ft_pf_handle_z_u(va_list args, t_print *features, int *ret);
-int             ft_pf_handle_x(va_list args, t_print *features, int *ret);
-int             ft_pf_handle_x_mod(char **new, char **str, char **spaces, t_print *features);
-int             ft_pf_handle_no_x(va_list args, t_print *features, int *ret);
-int     ft_pf_handle_hh_x(va_list args, t_print *features, int *ret);
-int             ft_pf_handle_h_x(va_list args, t_print *features, int *ret);
-int             ft_pf_handle_ll_x(va_list args, t_print *features, int *ret);
-int             ft_pf_handle_l_x(va_list args, t_print *features, int *ret);
-int             ft_pf_handle_j_x(va_list args, t_print *features, int *ret);
-int             ft_pf_handle_z_x(va_list args, t_print *features, int *ret);
+int		ft_pf_handle_l_o(va_list args, t_print *features, int *ret);
+int		ft_pf_handle_j_o(va_list args, t_print *features, int *ret);
+int		ft_pf_handle_z_o(va_list args, t_print *features, int *ret);
+int		ft_pf_handle_u(va_list args, t_print *features, int *ret);
+int		ft_pf_handle_u_mod(char **new, char **str, char **spaces, t_print *features);
+int		ft_pf_handle_no_u(va_list args, t_print *features, int *ret);
+int		ft_pf_handle_hh_u(va_list args, t_print *features, int *ret);
+int		ft_pf_handle_h_u(va_list args, t_print *features, int *ret);
+int		ft_pf_handle_ll_u(va_list args, t_print *features, int *ret);
+int		ft_pf_handle_l_u(va_list args, t_print *features, int *ret);
+int		ft_pf_handle_j_u(va_list args, t_print *features, int *ret);
+int		ft_pf_handle_z_u(va_list args, t_print *features, int *ret);
+int		ft_pf_handle_x(va_list args, t_print *features, int *ret);
+int		ft_pf_handle_x_mod(char **new, char **str, char **spaces, t_print *features);
+int		ft_pf_handle_no_x(va_list args, t_print *features, int *ret);
+int		ft_pf_handle_hh_x(va_list args, t_print *features, int *ret);
+int		ft_pf_handle_h_x(va_list args, t_print *features, int *ret);
+int		ft_pf_handle_ll_x(va_list args, t_print *features, int *ret);
+int		ft_pf_handle_l_x(va_list args, t_print *features, int *ret);
+int		ft_pf_handle_j_x(va_list args, t_print *features, int *ret);
+int		ft_pf_handle_z_x(va_list args, t_print *features, int *ret);
 int		ft_pf_hex_sign(char **str);
 int		ft_pf_hex_sign_zeros(char **str);
 int		ft_pf_sign(char **str, t_print *features);
@@ -88,13 +88,16 @@ int		ft_pf_alter(char **str, int alter);
 int		ft_pf_alter_x(char **str, t_print *features);
 int		ft_pf_alter_x_final(char **str, t_print *features);
 int		ft_pf_handle_chars(int *ret, va_list args, t_print *features);
-int             ft_pf_handle_c(va_list args, t_print *features, int *ret);
-int             ft_pf_handle_cap_c(va_list args, t_print *features, int *ret);
+int		ft_pf_handle_c(va_list args, t_print *features, int *ret);
+int		ft_pf_handle_cap_c(va_list args, t_print *features, int *ret);
 int		ft_pf_width_fl_zeros_left_null_c(char **spaces, t_print *features);
 int     ft_pf_handle_others(t_print *features, int *ret);
 int     ft_pf_handle_f(va_list args, t_print *features, int *ret);
-int ft_pf_handle_f_mod(char **new, char **str, char **spaces, t_print *features);
+int		ft_pf_handle_f_mod(char **new, char **str, char **spaces, t_print *features);
 int     ft_pf_handle_no_f(va_list args, t_print *features, int *ret);
 int     ft_pf_handle_ll_f(va_list args, t_print *features, int *ret);
+void	ft_pf_set_signed(t_print *features);
+void	ft_pf_set_left(t_print *features);
+int		ft_pf_print(char **str, int *ret);
 
 #endif
