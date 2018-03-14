@@ -230,7 +230,7 @@ $(O_FILES): $(C_FILES)
 	gcc -Wall -Werror -Wextra -c $(C_FILES)
 
 clean:
-	/bin/rm -f $(O_FILES)
+	/bin/rm -f $(O_FILES) $(PRINTF_O_FILES)
 
 fclean: clean
 	/bin/rm -f $(NAME)
