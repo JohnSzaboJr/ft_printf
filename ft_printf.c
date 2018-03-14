@@ -88,7 +88,7 @@ int			ft_printf(char *format, ...)
 // bonus -
 // norm -
 // streamline -
-// nem kello functionok
+// nem kello functionok - 
 // makefile
 
 // kerekites?

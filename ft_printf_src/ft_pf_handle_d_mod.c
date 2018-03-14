@@ -86,7 +86,7 @@ int     ft_pf_handle_l_d(va_list args, t_print *features, int *ret)
 	char            *spaces;
 
 	c = (long int)(va_arg(args, long long int));
-	str = ft_longtoa(c);
+	str = ft_longlongtoa(c);
 	if (!(ft_pf_handle_d_mod(&new, &str, &spaces, features)))
 		return (0);
 	ft_putstr(new);
