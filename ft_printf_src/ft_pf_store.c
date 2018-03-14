@@ -6,19 +6,12 @@
 /*   By: jszabo <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/12 16:53:24 by jszabo            #+#    #+#             */
-/*   Updated: 2018/03/12 15:47:21 by jszabo           ###   ########.fr       */
+/*   Updated: 2018/03/14 14:56:17 by jszabo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../libft.h"
 #include "../ft_printf.h"
-
-int		ft_pf_store_type(char **str, char *type)
-{
-	*type = (*str)[0];
-	*str = ft_memmove(*str, *str + 1, ft_strlen(*str));
-	return (1);
-}
 
 int		ft_pf_store_flags(char **str, t_print *features)
 {
@@ -76,35 +69,36 @@ int		ft_pf_store_num_width(char **str, size_t *target, va_list args,
 	return (1);
 }
 
+int		ft_pf_store_precision_arg(char **str, va_list args, t_print *features)
+{
+	int pr;
+
+	pr = va_arg(args, int);
+	features->is_precision = pr < 0 ? 0 : 1;
+	features->precision = pr < 0 ? 0 : pr;
+	*str = ft_memmove(*str, *str + 1, ft_strlen(*str));
+	return (1);
+}
+
 int		ft_pf_store_precision(char **str, t_print *features, va_list args)
 {
 	int i;
-	int pr;
 
 	i = 0;
-	pr = 0;
 	while ((*str)[i] == '.')
 		i++;
 	if (i)
 	{
 		features->is_precision = 1;
 		*str = ft_memmove(*str, *str + i, ft_strlen(*str) - i + 1);
-		if (!ft_isdigit((*str)[0]) && (*str)[0] != '*')
-			features->precision = 0;
-		else if ((*str)[0] == '*')
-		  {
-		  	pr = va_arg(args, int);
-			if (pr < 0)
-			  features->is_precision = 0;
-			features->precision = pr < 0 ? 0 : pr;
-			*str = ft_memmove(*str, *str + 1, ft_strlen(*str));
-		  }
-		else
+		if (ft_isdigit((*str)[0]))
 			ft_pf_store_num_width(str, &(features->precision), args, features);
+		else if ((*str)[0] == '*')
+			ft_pf_store_precision_arg(str, args, features);
+		else
+			features->precision = 0;
+		ft_pf_store_precision(str, features, args);
 	}
-	else
-		return (1);
-	ft_pf_store_precision(str, features, args);
 	return (1);
 }
 

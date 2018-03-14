@@ -6,7 +6,7 @@
 /*   By: jszabo <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/08 10:59:10 by jszabo            #+#    #+#             */
-/*   Updated: 2018/03/12 15:37:40 by jszabo           ###   ########.fr       */
+/*   Updated: 2018/03/14 13:28:50 by jszabo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,9 +87,8 @@ int			ft_printf(char *format, ...)
 
 // bonus -
 // norm -
-// streamline -
-// nem kello functionok - 
+// streamline 
+// nem kello functionok  
 // makefile
 
-// kerekites?
 // vegen nagybetuk NaN IN

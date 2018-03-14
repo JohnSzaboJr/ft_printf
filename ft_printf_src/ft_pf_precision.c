@@ -6,7 +6,7 @@
 /*   By: jszabo <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/15 10:52:42 by jszabo            #+#    #+#             */
-/*   Updated: 2018/03/08 15:43:34 by jszabo           ###   ########.fr       */
+/*   Updated: 2018/03/14 15:07:58 by jszabo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,6 @@ int		ft_pf_precision_num(char **str, t_print *features)
 {
 	char	*spaces;
 	char	*new;
-	char	*alter;
 	size_t	len;
 
 	if ((*str)[0] == '0' && (features->type == 'x' || features->type == 'X'))
@@ -58,10 +57,9 @@ int		ft_pf_precision_num(char **str, t_print *features)
 	? ft_strlen(*str) - 1 : ft_strlen(*str);
 	if (features->precision > len)
 	{
-		if (!(spaces = ft_strnew(features->precision - len)))
-			return (0);
-		spaces = ft_strnfill(spaces, '0', (features->precision - len));
-		if (!(new = ft_strjoin(spaces, *str)))
+		if (!(spaces = ft_strnew(features->precision - len)) ||
+			!(spaces = ft_strnfill(spaces, '0', (features->precision - len))) ||
+			!(new = ft_strjoin(spaces, *str)))
 			return (0);
 		free(spaces);
 		free(*str);
@@ -69,13 +67,5 @@ int		ft_pf_precision_num(char **str, t_print *features)
 	}
 	if (features->is_precision)
 		features->fl_prep_zeros = 0;
-	if ((features->type == 'o' || features->type == 'O')
-	&& features->fl_alter && (*str)[0] != '0')
-	{
-		if (!(alter = ft_strjoin("0", *str)))
-			return (0);
-		free(*str);
-		*str = alter;
-	}
 	return (1);
 }

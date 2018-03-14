@@ -6,7 +6,7 @@
 /*   By: jszabo <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/09 14:13:26 by jszabo            #+#    #+#             */
-/*   Updated: 2018/03/12 15:01:18 by jszabo           ###   ########.fr       */
+/*   Updated: 2018/03/14 15:09:49 by jszabo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,6 +87,7 @@ int		ft_pf_plus_space(char **str, t_print *features);
 int		ft_pf_alter(char **str, int alter);
 int		ft_pf_alter_x(char **str, t_print *features);
 int		ft_pf_alter_x_final(char **str, t_print *features);
+int		ft_pf_alter_o(char **str, t_print *features);
 int		ft_pf_handle_chars(int *ret, va_list args, t_print *features);
 int		ft_pf_handle_c(va_list args, t_print *features, int *ret);
 int		ft_pf_handle_cap_c(va_list args, t_print *features, int *ret);
@@ -99,5 +100,6 @@ int     ft_pf_handle_ll_f(va_list args, t_print *features, int *ret);
 void	ft_pf_set_signed(t_print *features);
 void	ft_pf_set_left(t_print *features);
 int		ft_pf_print(char **str, int *ret);
+int		ft_pf_store_precision_arg(char **str, va_list args, t_print *features);
 
 #endif

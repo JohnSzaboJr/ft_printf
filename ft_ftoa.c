@@ -6,14 +6,12 @@
 /*   By: jszabo <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/23 15:00:30 by jszabo            #+#    #+#             */
-/*   Updated: 2018/03/11 14:42:11 by jszabo           ###   ########.fr       */
+/*   Updated: 2018/03/14 11:39:01 by jszabo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
 #include "libft.h"
-//
-#include <stdio.h>
 
 static	int		ft_determine_len(int n, int len)
 {
@@ -38,8 +36,8 @@ char			*ft_ftoa(double n, size_t pr)
 		return (NULL);
 	if (!pr)
 		return (beg);
-        n = (n < 0) ? -n : n;
-	tmp2 = ((n - (long long)n) * ft_recursive_power(10, (int)pr));
+	n = (n < 0) ? -n : n;
+	tmp2 = ft_round((n - (long long)n) * ft_recursive_power(10, (int)pr));
 	tmp = tmp2 + 1e-9;
 	len = 0;
 	len = ft_determine_len(tmp, len);

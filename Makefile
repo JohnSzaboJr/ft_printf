@@ -86,10 +86,12 @@ ft_longlongtoa.c \
 ft_uitoa_base.c \
 ft_putwchar.c \
 ft_addtoa.c \
-ft_ftoa.c
+ft_ftoa.c \
+ft_round.c
 
 PRINTF_C_FILES = ft_printf.c \
 ./ft_printf_src/ft_pf_store.c \
+./ft_printf_src/ft_pf_store_b.c \
 ./ft_printf_src/ft_pf_handle.c \
 ./ft_printf_src/ft_pf_struct_init.c \
 ./ft_printf_src/ft_pf_precision.c \
@@ -195,10 +197,12 @@ ft_longlongtoa.o \
 ft_uitoa_base.o \
 ft_putwchar.o \
 ft_addtoa.o \
-ft_ftoa.o
+ft_ftoa.o \
+ft_round.o
 
 PRINTF_O_FILES = ft_printf.o \
 ft_pf_store.o \
+ft_pf_store_b.o \
 ft_pf_handle.o \
 ft_pf_struct_init.o \
 ft_pf_precision.o \

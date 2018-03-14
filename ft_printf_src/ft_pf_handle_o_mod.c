@@ -6,7 +6,7 @@
 /*   By: jszabo <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/14 14:49:38 by jszabo            #+#    #+#             */
-/*   Updated: 2018/02/24 18:58:44 by jszabo           ###   ########.fr       */
+/*   Updated: 2018/03/14 15:10:26 by jszabo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@ int	ft_pf_handle_o_mod(char **new, char **str, char **spaces, t_print *features)
 {
   if (!(*new = ft_strdup(*str)) ||
       !ft_pf_precision_num(new, features) ||
+	  !ft_pf_alter_o(new, features) ||
       !ft_pf_width_fl_zeros_left(new, spaces, features)) 
 	return (0);
   return (1);
