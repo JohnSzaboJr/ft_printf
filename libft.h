@@ -6,7 +6,7 @@
 /*   By: jszabo <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/14 10:33:32 by jszabo            #+#    #+#             */
-/*   Updated: 2018/03/14 11:41:08 by jszabo           ###   ########.fr       */
+/*   Updated: 2018/03/18 17:20:43 by jszabo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,7 +91,7 @@ int					ft_count_if(char **tab, int (*f)(char*));
 void				ft_foreach(int *tab, int length, void (*f)(int));
 int					*ft_map(int *tab, int length, int (*f)(int));
 int					ft_recursive_factorial(int nb);
-int					ft_recursive_power(int nb, int power);
+int					ft_power(int nb, int power);
 int					ft_sqrt(int nb);
 char				*ft_strrev(char *str);
 void				ft_swap(int *a, int *b);
@@ -109,7 +109,6 @@ wchar_t				*ft_wstrcpy(wchar_t *dst, const wchar_t *src);
 wchar_t				*ft_wstrnew(int size);
 wchar_t				*ft_wstrnfill(wchar_t *str, wchar_t c, int n);
 wchar_t				*ft_wstrjoin(const wchar_t *s1, const wchar_t *s2);
-char				*ft_sizettohexa(size_t value);
 char				*ft_longlongtoa(long long n);
 char				*ft_uitoa_base(unsigned long long value, int base);
 int					ft_putwchar(wchar_t c);

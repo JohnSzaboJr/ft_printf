@@ -81,7 +81,6 @@ ft_wstrcpy.c \
 ft_wstrnew.c \
 ft_wstrnfill.c \
 ft_wstrjoin.c \
-ft_sizettohexa.c \
 ft_longlongtoa.c \
 ft_uitoa_base.c \
 ft_putwchar.c \
@@ -98,18 +97,11 @@ PRINTF_C_FILES = ft_printf.c \
 ./ft_printf_src/ft_pf_width.c \
 ./ft_printf_src/ft_pf_handle_strings.c \
 ./ft_printf_src/ft_pf_sign.c \
-./ft_printf_src/ft_pf_handle_d_mod.c \
-./ft_printf_src/ft_pf_handle_d_mod_b.c \
-./ft_printf_src/ft_pf_handle_numbers.c \
-./ft_printf_src/ft_pf_handle_o_mod.c \
-./ft_printf_src/ft_pf_handle_o_mod_b.c \
-./ft_printf_src/ft_pf_handle_u_mod.c \
-./ft_printf_src/ft_pf_handle_u_mod_b.c \
-./ft_printf_src/ft_pf_handle_x_mod.c \
-./ft_printf_src/ft_pf_handle_x_mod_b.c \
+./ft_printf_src/ft_pf_num_mod.c \
 ./ft_printf_src/ft_pf_handle_chars.c \
 ./ft_printf_src/ft_pf_alter.c \
-./ft_printf_src/ft_pf_handle_f_mod.c
+./ft_printf_src/ft_pf_handle_f_mod.c \
+./ft_printf_src/ft_pf_handle_print.c
 
 O_FILES = ft_strcpy.o \
 ft_strchr.o \
@@ -192,7 +184,6 @@ ft_wstrcpy.o \
 ft_wstrnew.o \
 ft_wstrnfill.o \
 ft_wstrjoin.o \
-ft_sizettohexa.o \
 ft_longlongtoa.o \
 ft_uitoa_base.o \
 ft_putwchar.o \
@@ -209,18 +200,11 @@ ft_pf_precision.o \
 ft_pf_width.o \
 ft_pf_handle_strings.o \
 ft_pf_sign.o \
-ft_pf_handle_d_mod.o \
-ft_pf_handle_d_mod_b.o \
-ft_pf_handle_numbers.o \
-ft_pf_handle_o_mod.o \
-ft_pf_handle_o_mod_b.o \
-ft_pf_handle_u_mod.o \
-ft_pf_handle_u_mod_b.o \
-ft_pf_handle_x_mod.o \
-ft_pf_handle_x_mod_b.o \
+ft_pf_num_mod.o \
 ft_pf_handle_chars.o \
 ft_pf_alter.o \
-ft_pf_handle_f_mod.o
+ft_pf_handle_f_mod.o \
+ft_pf_handle_print.o
 
 all: $(NAME)
 

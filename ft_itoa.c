@@ -6,7 +6,7 @@
 /*   By: jszabo <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/23 15:00:30 by jszabo            #+#    #+#             */
-/*   Updated: 2017/12/03 14:53:13 by jszabo           ###   ########.fr       */
+/*   Updated: 2018/03/18 17:09:53 by jszabo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ static	int		ft_determine_len(int n, int len)
 
 char			*ft_itoa(int n)
 {
-    int		neg;
+	int		neg;
 	int		len;
 	char	*ans;
 

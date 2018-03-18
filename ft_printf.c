@@ -6,7 +6,7 @@
 /*   By: jszabo <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/08 10:59:10 by jszabo            #+#    #+#             */
-/*   Updated: 2018/03/14 13:28:50 by jszabo           ###   ########.fr       */
+/*   Updated: 2018/03/18 17:35:00 by jszabo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,12 +21,12 @@ static int	ft_pf_format(t_print *features, va_list args, int *ret)
 	if (t == 'S' || t == 's')
 		return (ft_pf_handle_strings(ret, args, features));
 	if (t == 'p')
-	  	return (ft_pf_handle_pointers(ret, args, features));
+		return (ft_pf_handle_pointers(ret, args, features));
 	if (t == 'd' || t == 'D' || t == 'i' || t == 'o' || t == 'O' ||
-	    t == 'u' || t == 'U' || t == 'x' || t == 'X' || t == 'f' || t == 'F')
+		t == 'u' || t == 'U' || t == 'x' || t == 'X' || t == 'f' || t == 'F')
 		return (ft_pf_handle_numbers(ret, args, features));
 	if (t == 'c' || t == 'C')
-	  return (ft_pf_handle_chars(ret, args, features));
+		return (ft_pf_handle_chars(ret, args, features));
 	else if (t)
 		return (ft_pf_handle_others(features, ret));
 	return (1);
@@ -84,11 +84,3 @@ int			ft_printf(char *format, ...)
 	va_end(args);
 	return (ret);
 }
-
-// bonus -
-// norm -
-// streamline 
-// nem kello functionok  
-// makefile
-
-// vegen nagybetuk NaN IN

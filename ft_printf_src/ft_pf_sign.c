@@ -6,7 +6,7 @@
 /*   By: jszabo <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/14 14:49:38 by jszabo            #+#    #+#             */
-/*   Updated: 2018/03/07 14:29:42 by jszabo           ###   ########.fr       */
+/*   Updated: 2018/03/15 14:09:37 by jszabo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,20 +57,17 @@ int		ft_pf_sign(char **str, t_print *features)
 
 int		ft_pf_plus_space(char **str, t_print *features)
 {
-	char *sign;
 	char *tmp;
 
-	if (!(sign = ft_strnew(1)))
-		return (0);
-	sign[0] = '+';
 	if ((features->fl_signed_num || features->fl_sign_space) &&
-	!ft_strchr(*str, '-'))
+	!ft_strchr(*str, '-') && features->type != 'o' && features->type != 'O'
+	&& features->type != 'u' && features->type != 'U' && features->type != 'x'
+	&& features->type != 'X' && features->type != 'p')
 	{
-		if (!(tmp = ft_strjoin(sign, *str)))
+		if (!(tmp = ft_strjoin("+", *str)))
 			return (0);
 		free(*str);
 		*str = tmp;
 	}
-	free(sign);
 	return (1);
 }

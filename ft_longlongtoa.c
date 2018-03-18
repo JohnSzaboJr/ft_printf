@@ -6,7 +6,7 @@
 /*   By: jszabo <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/23 15:00:30 by jszabo            #+#    #+#             */
-/*   Updated: 2018/03/05 14:49:06 by jszabo           ###   ########.fr       */
+/*   Updated: 2018/03/18 17:14:34 by jszabo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,12 +31,8 @@ char			*ft_longlongtoa(long long n)
 	char	*ans;
 
 	len = 0;
-	min = 0;
-	if (n == LLONG_MIN)
-	  {
-	    min = 1;
-	    n++;
-	  }
+	min = (n == LLONG_MIN) ? 1 : 0;
+	n = (n == LLONG_MIN) ? n + 1 : n;
 	neg = (n < 0) ? 1 : 0;
 	n = (n < 0) ? -n : n;
 	len = ft_determine_len(n, len);
@@ -52,6 +48,6 @@ char			*ft_longlongtoa(long long n)
 	}
 	ans[0] = (neg) ? '-' : ans[0];
 	if (min)
-	  ft_addtoa(&ans);
+		ft_addtoa(&ans);
 	return (ans);
 }

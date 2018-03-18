@@ -1,31 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_addtoa.c                                        :+:      :+:    :+:   */
+/*   ft_round.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jszabo <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/03/02 13:47:54 by jszabo            #+#    #+#             */
-/*   Updated: 2018/03/18 17:32:15 by jszabo           ###   ########.fr       */
+/*   Created: 2018/03/14 11:10:23 by jszabo            #+#    #+#             */
+/*   Updated: 2018/03/14 13:29:56 by jszabo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <stdlib.h>
 #include "libft.h"
 
-int		ft_addtoa(char **num)
-{
-	int i;
+/*
+** Takes a double, and rounds it up or down depending on the value after the
+** dot.
+*/
 
-	i = ft_strlen(*num) - 1;
-	while (i)
-	{
-		if ((*num)[i] < '9')
-		{
-			((*num)[i])++;
-			break ;
-		}
-		(*num)[i] = '0';
-		i++;
-	}
-	return (1);
+double	ft_round(double n)
+{
+	return (((n - ((long long)(n + 1e-9))) * 10) > 5) ? n + 1 : n;
 }

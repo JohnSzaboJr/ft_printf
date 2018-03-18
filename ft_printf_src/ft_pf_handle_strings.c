@@ -6,7 +6,7 @@
 /*   By: jszabo <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/14 14:49:38 by jszabo            #+#    #+#             */
-/*   Updated: 2018/03/14 15:30:09 by jszabo           ###   ########.fr       */
+/*   Updated: 2018/03/18 12:44:42 by jszabo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,7 @@ int		ft_pf_handle_s(va_list args, t_print *features, int *ret)
 	char	*new;
 	char	*spaces;
 
-	str = va_arg(args, char*);
-	if (!str)
+	if (!(str = va_arg(args, char*)))
 		str = "(null)";
 	if (!(new = ft_strdup(str)) ||
 		!ft_pf_precision_s(&new, features) ||

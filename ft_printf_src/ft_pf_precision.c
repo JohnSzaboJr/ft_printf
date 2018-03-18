@@ -6,7 +6,7 @@
 /*   By: jszabo <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/15 10:52:42 by jszabo            #+#    #+#             */
-/*   Updated: 2018/03/14 15:07:58 by jszabo           ###   ########.fr       */
+/*   Updated: 2018/03/18 12:49:05 by jszabo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,10 +49,12 @@ int		ft_pf_precision_num(char **str, t_print *features)
 	char	*new;
 	size_t	len;
 
+	if (features->type == 'f' || features->type == 'F')
+		return (1);
 	if ((*str)[0] == '0' && (features->type == 'x' || features->type == 'X'))
 		features->fl_alter = 0;
-	(*str)[0] = ((*str)[0] == '0' && !(features->fl_alter) &&
-	features->is_precision) ? '\0' : (*str)[0];
+	(*str)[0] = ((*str)[0] == '0' && (!(features->fl_alter) ||
+	features->type == 'p') && features->is_precision) ? '\0' : (*str)[0];
 	len = ((*str)[0] == '-' || (*str)[0] == '+')
 	? ft_strlen(*str) - 1 : ft_strlen(*str);
 	if (features->precision > len)
